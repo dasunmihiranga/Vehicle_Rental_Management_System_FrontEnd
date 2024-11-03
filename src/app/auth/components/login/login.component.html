@@ -1,10 +1,19 @@
-<div class="flex items-center justify-center min-h-screen bg-background text-text">
-    <div class="w-full max-w-sm overflow-hidden bg-surface rounded-lg shadow-lg transition-transform transform hover:scale-105">
-        <div class="px-8 py-10">
+<div class="flex items-center justify-center min-h-screen bg-background text-text relative">
+    <div class="fixed inset-0 ">
+        <img
+          src="../../../../assets/img/1.jpg"
+          alt="Background"
+          class="w-full h-full object-cover"
+        />
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-background bg-opacity-60"></div>
+      </div>
+    <div class="card w-full max-w-sm overflow-hidden bg-surface rounded-lg shadow-lg transition-transform transform hover:scale-105">
+        <div class=" px-8 py-10">
             <h3 class="text-3xl font-bold text-center text-text">Welcome Back</h3>
             <p class="mt-2 text-center text-muted">Login to continue</p>
 
-            <form class="mt-6 space-y-5">
+            <form class=" mt-6 space-y-5">
                 <div class="relative">
                     <input class="block w-full px-4 py-3 text-text placeholder-gray-400 bg-surface border border-muted rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition duration-150 ease-in-out" type="email" placeholder="Email Address" aria-label="Email Address">
                 </div>
