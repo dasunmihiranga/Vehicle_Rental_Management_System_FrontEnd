@@ -18,6 +18,9 @@ import{NzFormModule} from 'ng-zorro-antd/form';
 import{NzButtonModule} from 'ng-zorro-antd/button';
 import{NzInputModule} from 'ng-zorro-antd/input';
 import{NzLayoutModule} from 'ng-zorro-antd/layout';
+import { LoginheaderComponent } from './auth/components/loginheader/loginheader.component';
+import { DefaultpageComponent } from './auth/components/defaultpage/defaultpage.component';
+
 
 
 
@@ -27,7 +30,10 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LoginheaderComponent,
+    DefaultpageComponent,
+
   ],
   imports: [
     BrowserModule,

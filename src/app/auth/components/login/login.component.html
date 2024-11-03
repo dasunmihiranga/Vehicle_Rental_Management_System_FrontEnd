@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="flex items-center justify-center min-h-screen bg-background text-text">
+    <div class="w-full max-w-sm overflow-hidden bg-surface rounded-lg shadow-lg transition-transform transform hover:scale-105">
+        <div class="px-8 py-10">
+            <h3 class="text-3xl font-bold text-center text-text">Welcome Back</h3>
+            <p class="mt-2 text-center text-muted">Login to continue</p>
+
+            <form class="mt-6 space-y-5">
+                <div class="relative">
+                    <input class="block w-full px-4 py-3 text-text placeholder-gray-400 bg-surface border border-muted rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition duration-150 ease-in-out" type="email" placeholder="Email Address" aria-label="Email Address">
+                </div>
+
+                <div class="relative">
+                    <input class="block w-full px-4 py-3 text-text placeholder-gray-400 bg-surface border border-muted rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition duration-150 ease-in-out" type="password" placeholder="Password" aria-label="Password">
+                </div>
+
+                <div class="flex items-center justify-between mt-6">
+                    <a href="#" class="text-sm text-primary hover:underline">Forgot Password?</a>
+                    <button type="submit" class="px-6 py-3 text-sm font-medium tracking-wide text-white bg-primary rounded-lg hover:bg-primary-dark transition-colors duration-300 transform focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="flex items-center justify-center py-4 bg-surface rounded-b-lg">
+            <span class="text-sm text-muted">Don’t have an account?</span>
+            <a href="#" class="ml-2 text-sm font-semibold text-primary hover:underline">Register</a>
+        </div>
+    </div>
+</div>
