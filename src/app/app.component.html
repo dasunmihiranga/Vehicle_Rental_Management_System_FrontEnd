@@ -1,4 +1,6 @@
-<app-loginheader></app-loginheader>
+<app-loginheader *ngIf="!(isAdminLoggedIn || isCustomerLoggedIn)"></app-loginheader>
+<app-admin-header *ngIf="isAdminLoggedIn"></app-admin-header>
+<app-customer-header *ngIf="isCustomerLoggedIn"></app-customer-header>
 <router-outlet></router-outlet>
 
  

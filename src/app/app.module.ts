@@ -20,6 +20,10 @@ import{NzInputModule} from 'ng-zorro-antd/input';
 import{NzLayoutModule} from 'ng-zorro-antd/layout';
 import { LoginheaderComponent } from './auth/components/loginheader/loginheader.component';
 import { DefaultpageComponent } from './auth/components/defaultpage/defaultpage.component';
+import { AdminHeaderComponent } from './modules/admin/components/admin-header/admin-header.component';
+import { CustomerHeaderComponent } from './modules/customer/components/customer-header/customer-header.component';
+
+import { PostVehicleComponent } from '../app/modules/admin/components/post-vehicle/post-vehicle.component';
 
 
 
@@ -34,6 +38,9 @@ registerLocaleData(en);
     SignupComponent,
     LoginheaderComponent,
     DefaultpageComponent,
+    AdminHeaderComponent,
+    CustomerHeaderComponent,
+
 
   ],
   imports: [
