@@ -1,167 +1,139 @@
 <div class="fixed inset-0">
-  <img
-    src="../../../../assets/img/1.jpg"
-    alt="Background"
-    class="w-full h-full object-cover"
-  />
-  <!-- Dark Overlay -->
-  <div class="absolute inset-0"></div>
-</div>
-
-<div
-  class="card flex items-center justify-center mt-10 min-h-screen bg-gray-100 relative z-10"
->
-  <div
-    class="card bg-surface shadow-md rounded-lg p-6 w-full max-w-md transform scale-90 transition-transform duration-300 ease-in-out"
-  >
-    <h2 class="text-xl font-bold text-center text-white mb-4">Add Vehicle</h2>
-    <!-- Reduced font size -->
-
-    <form [formGroup]="postVehicleForm">
-      <!-- Image Upload Input -->
-      <div class="mb-4">
-        <label
-          class="block mb-2 text-sm font-medium text-white"
-          for="vehicle_image"
-          *ngIf="selectedFile"
-          >
-          <img class="profile" [src]="imagePreview" alt="profile">
-          </label
-        >
-        <input
-          class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-          placeholder="Upload Vehicle Image"
-          accept="image/x-png,image/gif,image/jpeg"
-          (change)="onFileSelected($event)"
-          id="vehicle_image"
-          type="file"
-        />
-      </div>
-
-      <!-- Vehicle Brand Dropdown -->
-      <div class="mb-4">
-        <label for="vehicle-brand" class="block text-sm font-medium text-white"
-          >Select Vehicle Brand</label
-        >
-        <select
-          id="vehicle-brand"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
-          formControlName="brand"
-          >
-          <option *ngFor="let brand of listOfBrands" value={{brand}}>{{brand}}</option>
-
-        </select>
-      </div>
-
-      <!-- Vehicle Model Input -->
-      <div class="mb-4">
-        <label for="vehicle-model" class="block text-sm font-medium text-white"
-          >Vehicle Model</label
-        >
-        <input
-          type="text"
-          id="vehicle-model"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Enter Vehicle Model"
-          formControlName="model"
-          
-        />
-      </div>
-
-      <!-- Vehicle Type Dropdown -->
-      <div class="mb-4">
-        <label for="vehicle-type" class="block text-sm font-medium text-white"
-          >Select Type</label
-        >
-        <select
-          id="vehicle-type"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          formControlName="type"
-          >
-          <option *ngFor="let type of listOfType" value={{type}}>{{type}}</option>
-        </select>
-      </div>
-
-      <!-- Transmission Dropdown -->
-      <div class="mb-4">
-        <label for="transmission" class="block text-sm font-medium text-white"
-          >Select Transmission</label
-        >
-        <select
-          id="transmission"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-           formControlName="transmission"
-          >
-          <option *ngFor="let trasmisstion of listOfTransmission" value={{trasmisstion}}>{{trasmisstion}}</option>
-        </select>
-      </div>
-
-      <!-- Year Picker Dropdown -->
-      <div class="mb-4">
-        <label for="year-picker" class="block text-sm font-medium text-white"
-          >Vehicle Year</label
-        >
-        <select
-          id="year-picker"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          formControlName="year"
-          >   
-          <option *ngFor="let year of listOfYears" value={{year}}>{{year}}</option>
-        </select>
-      </div>
-
-      <!-- Color Dropdown -->
-      <div class="mb-4">
-        <label for="vehicle-color" class="block text-sm font-medium text-white"
-          >Select Color</label
-        >
-        <select
-          id="vehicle-color"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-         formControlName="color"
-          >
-          <option *ngFor="let color of listOfColor" value={{color}}>{{color}}</option>
-        </select>
-      </div>
-
-      <!-- Rent Price Input -->
-      <div class="mb-4">
-        <label for="rent-price" class="block text-sm font-medium text-white"
-          >Rent Price</label
-        >
-        <input
-          type="text"
-          formControlName="price"
-          id="rent-price"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Enter Rent Price"
-        />
-      </div>
-
-      <!-- Description Textarea -->
-      <div class="mb-4">
-        <label
-          for="vehicle-description"
-          class="block text-sm font-medium text-white"
-          >Description</label
-        >
-        <textarea
-          id="vehicle-description"
-          formControlName="description"
-          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          rows="3"
-          placeholder="Enter Vehicle Description"
-        ></textarea>
-      </div>
-
-      <button
-        type="button"
-        
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
-        (click)="postVehicle()"
-      >
-        Add Vehicle
-      </button>
-    </form>
+    <img
+      src="../../../../assets/img/1.jpg"
+      alt="Background"
+      class="w-full h-full object-cover"
+    />
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black opacity-60"></div>
   </div>
-</div>
+  
+  <div class="card flex items-center justify-center mt-10 min-h-screen bg-gray-100 relative z-10">
+    <div class="card bg-surface shadow-md rounded-lg p-6 w-full max-w-md transform scale-90 transition-transform duration-300 ease-in-out">
+      <h2 class="text-xl font-bold text-center text-white mb-4">Add Vehicle</h2>
+  
+      <form [formGroup]="postVehicleForm">
+        <!-- Image Upload Input -->
+        <div class="mb-4 text-center">
+          <label class="block mb-2 text-sm font-medium text-white" for="vehicle_image" *ngIf="selectedFile">
+            <img class="w-24 h-24 rounded-full object-cover mx-auto" [src]="imagePreview" alt="profile">
+          </label>
+          <input
+            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            placeholder="Upload Vehicle Image"
+            accept="image/x-png,image/gif,image/jpeg"
+            (change)="onFileSelected($event)"
+            id="vehicle_image"
+            type="file"
+          />
+        </div>
+  
+        <!-- Vehicle Brand Dropdown -->
+        <div class="mb-4">
+          <label for="vehicle-brand" class="block text-sm font-medium text-white">Select Vehicle Brand</label>
+          <select
+            id="vehicle-brand"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            formControlName="brand"
+          >
+            <option *ngFor="let brand of listOfBrands" [value]="brand">{{brand}}</option>
+          </select>
+        </div>
+  
+        <!-- Vehicle Model Input with Icon -->
+        <div class="mb-4 relative">
+          <label for="vehicle-model" class="block text-sm font-medium text-white">Vehicle Model</label>
+          <input
+            type="text"
+            id="vehicle-model"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pl-10"
+            placeholder="Enter Vehicle Model"
+            formControlName="model"
+          />
+          <i class="absolute left-2 top-9 text-gray-500 fas fa-car"></i>
+        </div>
+  
+        <!-- Vehicle Type Dropdown -->
+        <div class="mb-4">
+          <label for="vehicle-type" class="block text-sm font-medium text-white">Select Type</label>
+          <select
+            id="vehicle-type"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            formControlName="type"
+          >
+            <option *ngFor="let type of listOfType" [value]="type">{{type}}</option>
+          </select>
+        </div>
+  
+        <!-- Transmission Dropdown -->
+        <div class="mb-4">
+          <label for="transmission" class="block text-sm font-medium text-white">Select Transmission</label>
+          <select
+            id="transmission"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            formControlName="transmission"
+          >
+            <option *ngFor="let transmission of listOfTransmission" [value]="transmission">{{transmission}}</option>
+          </select>
+        </div>
+  
+        <!-- Year Picker Dropdown -->
+        <div class="mb-4">
+          <label for="year-picker" class="block text-sm font-medium text-white">Vehicle Year</label>
+          <select
+            id="year-picker"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            formControlName="year"
+          >
+            <option *ngFor="let year of listOfYears" [value]="year">{{year}}</option>
+          </select>
+        </div>
+  
+        <!-- Color Dropdown -->
+        <div class="mb-4">
+          <label for="vehicle-color" class="block text-sm font-medium text-white">Select Color</label>
+          <select
+            id="vehicle-color"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            formControlName="color"
+          >
+            <option *ngFor="let color of listOfColor" [value]="color">{{color}}</option>
+          </select>
+        </div>
+  
+        <!-- Rent Price Input with Icon -->
+        <div class="mb-4 relative">
+          <label for="rent-price" class="block text-sm font-medium text-white">Rent Price</label>
+          <input
+            type="text"
+            id="rent-price"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pl-10"
+            placeholder="Enter Rent Price"
+            formControlName="price"
+          />
+          <i class="absolute left-2 top-9 text-gray-500 fas fa-dollar-sign"></i>
+        </div>
+  
+        <!-- Description Textarea -->
+        <div class="mb-4">
+          <label for="vehicle-description" class="block text-sm font-medium text-white">Description</label>
+          <textarea
+            id="vehicle-description"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            formControlName="description"
+            rows="3"
+            placeholder="Enter Vehicle Description"
+          ></textarea>
+        </div>
+  
+        <button
+          type="button"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
+          (click)="postVehicle()"
+        >
+          Add Vehicle
+        </button>
+      </form>
+    </div>
+  </div>
+  

@@ -7,8 +7,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./post-vehicle.component.scss']
 })
 export class PostVehicleComponent {
-  
-
 
   postVehicleForm !: FormGroup;
   selectedFile : File |null=null;
@@ -58,6 +56,10 @@ export class PostVehicleComponent {
     formData.append('year', this.postVehicleForm.get('year')?.value || '');
   
     console.log(formData);
+    // Log FormData content
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
   }
   
   onFileSelected($event:any){
