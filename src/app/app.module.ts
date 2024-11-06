@@ -26,9 +26,6 @@ import { CustomerHeaderComponent } from './modules/customer/components/customer-
 import { PostVehicleComponent } from '../app/modules/admin/components/post-vehicle/post-vehicle.component';
 
 
-
-
-
 registerLocaleData(en);
 
 @NgModule({
