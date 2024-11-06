@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-post-vehicle',
@@ -19,7 +20,10 @@ export class PostVehicleComponent {
   listOfYears=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
 
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder,
+    private adminService:AdminService
+
+  ){}
   ngOnInit(){
     this.postVehicleForm = this.fb.group({
       model:[null,Validators.required],
@@ -40,26 +44,36 @@ export class PostVehicleComponent {
     console.log(this.postVehicleForm.value);
   
     const formData: FormData = new FormData();
+
+    const year = this.postVehicleForm.get('year')?.value;
+  const yearAsDate = new Date(parseInt(year), 0, 1);
+   
     
-    // Check if selectedFile is not null before appending
-    if (this.selectedFile) {
-      formData.append('img', this.selectedFile);
-    }
-  
-    formData.append('model', this.postVehicleForm.get('model')?.value || '');
     formData.append('brand', this.postVehicleForm.get('brand')?.value || '');
+    formData.append('colour', this.postVehicleForm.get('color')?.value || '');
+    formData.append('name', this.postVehicleForm.get('model')?.value || '');
     formData.append('type', this.postVehicleForm.get('type')?.value || '');
-    formData.append('color', this.postVehicleForm.get('color')?.value || '');
     formData.append('transmission', this.postVehicleForm.get('transmission')?.value || '');
-    formData.append('price', this.postVehicleForm.get('price')?.value || '');
     formData.append('description', this.postVehicleForm.get('description')?.value || '');
+    formData.append('price', this.postVehicleForm.get('price')?.value || '');
     formData.append('year', this.postVehicleForm.get('year')?.value || '');
+    formData.append('image', this.selectedFile!);
+    
   
     console.log(formData);
     // Log FormData content
-    formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-    });
+    // formData.forEach((value, key) => {
+    //   console.log(`${key}: ${value}`);
+    // });
+
+    this.adminService.postCar(formData).subscribe(
+      (res)=>{
+      console.log(res);
+
+    },(error)=>{
+      console.log("error--->"+error);
+      
+    })
   }
   
   onFileSelected($event:any){
