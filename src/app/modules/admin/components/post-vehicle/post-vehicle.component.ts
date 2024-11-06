@@ -81,7 +81,7 @@ export class PostVehicleComponent implements OnInit {
     // });
     this.adminService.postCar(formData).subscribe({
       next: () => {
-        this.successMessage = "Your account has been created successfully!";
+        this.successMessage = "Vehicle Post created successfully!";
         this.errorMessage = null;
         this.autoDismissSuccess();  // Call the auto dismiss method
   
@@ -91,7 +91,7 @@ export class PostVehicleComponent implements OnInit {
         }, 2000); // Delay of 5 seconds for the success message
       },
       error: (err) => {
-        this.errorMessage = err.error.message || "Registration failed!";
+        this.errorMessage = err.error.message || "Creation failed!";
         this.successMessage = null;
         this.autoDismissError();  // Call the auto dismiss method
       }

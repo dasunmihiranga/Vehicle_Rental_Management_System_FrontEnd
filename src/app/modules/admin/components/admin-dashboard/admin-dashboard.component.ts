@@ -20,10 +20,8 @@ export class AdminDashboardComponent {
 
   getAllCars() {
     this.adminService.getAllCars().subscribe((res: any[]) => {
-      // res is typed as any[]
       console.log(res);
       res.forEach((element: any) => {
-        // element typed as any
         element.processedImg =
           'data:image/jpeg;base64,' + element.returnedImage;
         this.cars.push(element);
@@ -32,18 +30,13 @@ export class AdminDashboardComponent {
   }
 
   deleteCar(id: number) {
-    // console.log(id);
-    // this.adminService.deleteCar(id).subscribe((res)=>{
-    //   this.getAllCars();
-    //   console.log(res);
-      
-    // });
+   
 
 
     this.adminService.deleteCar(id).subscribe({
       next: () => {
         this.getAllCars();
-        this.successMessage = 'Your account has been created successfully!';
+        this.successMessage = 'Deleted  successfully!';
         this.errorMessage = null;
         this.autoDismissSuccess(); // Call the auto dismiss method
 
@@ -53,7 +46,7 @@ export class AdminDashboardComponent {
         }, 2000); // Delay of 5 seconds for the success message
       },
       error: (err) => {
-        this.errorMessage = err.error.message || 'Registration failed!';
+        this.errorMessage = err.error.message || 'Deleted failed!';
         this.successMessage = null;
         this.autoDismissError(); // Call the auto dismiss method
       },
