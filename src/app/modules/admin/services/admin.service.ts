@@ -12,24 +12,24 @@ export class AdminService {
   constructor(private http:HttpClient) { }
   
   postCar(carDto:any):Observable<any>{
-    return this.http.post(`${BASE_URL}/api/admin/vehicle`,carDto,{
+    return this.http.post(`${BASE_URL}/api/admin/car`,carDto,{
       headers:this.createAuthorizationHeader()
     });
   }
 
   getAllCars():Observable<any>{
-    return this.http.get(`${BASE_URL}/api/admin/vehicles`,{
+    return this.http.get(`${BASE_URL}/api/admin/cars`,{
       headers : this.createAuthorizationHeader()
     })
   }
 
 
   deleteCar(id:number):Observable<any>{
-    return this.http.delete(`${BASE_URL}/api/admin/vehicle/${id}`);
+    return this.http.delete(`${BASE_URL}/api/admin/car/${id}`);
   }
 
   getCarById(id:number):Observable<any>{
-    return this.http.get(`${BASE_URL}/api/admin/vehicle/${id}`,{
+    return this.http.get(`${BASE_URL}/api/admin/car/${id}`,{
       headers:this.createAuthorizationHeader()
     });
   }
