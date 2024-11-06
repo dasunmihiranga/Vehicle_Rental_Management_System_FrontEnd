@@ -43,10 +43,10 @@ export class PostVehicleComponent implements OnInit {
 
   ngOnInit() {
     this.postVehicleForm = this.fb.group({
-      model: [null, Validators.required],
+      name: [null, Validators.required],
       brand: [null, Validators.required],
       type: [null, Validators.required],
-      color: [null, Validators.required],
+      colour: [null, Validators.required],
       transmission: [null, Validators.required],
       price: [null, Validators.required],
       description: [null, Validators.required],
@@ -64,8 +64,8 @@ export class PostVehicleComponent implements OnInit {
    
     
     formData.append('brand', this.postVehicleForm.get('brand')?.value || '');
-    formData.append('colour', this.postVehicleForm.get('color')?.value || '');
-    formData.append('name', this.postVehicleForm.get('model')?.value || '');
+    formData.append('colour', this.postVehicleForm.get('colour')?.value || '');
+    formData.append('name', this.postVehicleForm.get('name')?.value || '');
     formData.append('type', this.postVehicleForm.get('type')?.value || '');
     formData.append('transmission', this.postVehicleForm.get('transmission')?.value || '');
     formData.append('description', this.postVehicleForm.get('description')?.value || '');

@@ -7,6 +7,7 @@ import { AdminHeaderComponent } from './components/admin-header/admin-header.com
 import { PostVehicleComponent } from './components/post-vehicle/post-vehicle.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
 
 
 
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AdminDashboardComponent,
     PostVehicleComponent,
+    UpdateVehicleComponent,
 
     
   ],

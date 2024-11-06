@@ -87,7 +87,7 @@
       
             <!-- Action Buttons -->
             <div class="flex space-x-4 mt-4">
-              <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">Update</button>
+              <button routerLink="/admin/vehicle/{{car.id}}" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">Update</button>
               <button (click)="deleteCar(car.id)" class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600">Delete</button>
             </div>
           </div>

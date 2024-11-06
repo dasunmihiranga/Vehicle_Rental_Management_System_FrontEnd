@@ -91,7 +91,7 @@
           id="vehicle-model"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pl-10"
           placeholder="Enter Vehicle Model"
-          formControlName="model"
+          formControlName="name"
         />
         <i class="absolute left-2 top-9 text-gray-500 fas fa-car"></i>
         <div *ngIf="postVehicleForm.get('model')?.invalid && (postVehicleForm.get('model')?.dirty || postVehicleForm.get('model')?.touched)">
@@ -146,7 +146,7 @@
         <select
           id="vehicle-color"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          formControlName="color"
+          formControlName="colour"
         >
           <option *ngFor="let color of listOfColor" [value]="color">{{ color }}</option>
         </select>
