@@ -1,26 +1,16 @@
 <div class="fixed inset-0">
-  <img
-    src="../../../../assets/img/1.jpg"
-    alt="Background"
-    class="w-full h-full object-cover"
-  />
+  <img src="../../../../assets/img/1.jpg" alt="Background" class="w-full h-full object-cover" />
   <div class="absolute inset-0 bg-black opacity-60"></div>
 </div>
 
-<div
-  class="card flex items-center justify-center mt-10 min-h-screen bg-gray-100 relative z-10"
->
+<div class="card flex items-center justify-center mt-10 min-h-screen bg-gray-100 relative z-10">
   <div
     *ngIf="successMessage"
     @messageAnimation
     class="flex w-full max-w-sm overflow-hidden bg-emerald-500 rounded-lg shadow-md dark:bg-gray-800 mb-4 relative z-10"
   >
     <div class="flex items-center justify-center w-12 bg-emerald-600">
-      <svg
-        class="w-6 h-6 text-white fill-current"
-        viewBox="0 0 40 40"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333"
         />
@@ -40,11 +30,7 @@
     class="flex w-full max-w-sm overflow-hidden bg-red-500 rounded-lg shadow-md dark:bg-gray-800 mb-4"
   >
     <div class="flex items-center justify-center w-12 bg-red-600">
-      <svg
-        class="w-6 h-6 text-white fill-current"
-        viewBox="0 0 40 40"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM20 29.1667V29.1667C18.8833 29.1667 17.5 27.8333 17.5 26.6667C17.5 25.5 18.8833 24.1667 20 24.1667C21.1167 24.1667 22.5 25.5 22.5 26.6667C22.5 27.8333 21.1167 29.1667 20 29.1667ZM19.5833 15H20.4167V22.5H19.5833V15Z"
         />
@@ -58,25 +44,15 @@
     </div>
   </div>
 
-  <div
-    class="card bg-surface shadow-md rounded-lg p-6 w-full max-w-md transform scale-90 transition-transform duration-300 ease-in-out"
-  >
+  <div class="card bg-surface shadow-md rounded-lg p-6 w-full max-w-md transform scale-90 transition-transform duration-300 ease-in-out">
     <h2 class="text-xl font-bold text-center text-white mb-4">Add Vehicle</h2>
 
     <form [formGroup]="postVehicleForm" (ngSubmit)="postVehicle()">
       <div class="mb-4 text-center">
-        <label
-          class="block mb-2 text-sm font-medium text-white"
-          for="vehicle_image"
-          *ngIf="selectedFile"
-        >
-          <img
-            class="w-24 h-24 rounded-full object-cover mx-auto"
-            [src]="imagePreview"
-            alt="profile"
-          />
+        <label class="block mb-2 text-sm font-medium text-white" for="vehicle_image" *ngIf="selectedFile">
+          <img class="w-24 h-24 rounded-full object-cover mx-auto" [src]="imagePreview" alt="profile" />
         </label>
-        <input
+       <input
           class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
           placeholder="Upload Vehicle Image"
           accept="image/x-png,image/gif,image/jpeg"
@@ -84,55 +60,27 @@
           id="vehicle_image"
           type="file"
         />
-        <div
-          *ngIf="
-            postVehicleForm.get('image')?.invalid &&
-            (postVehicleForm.get('image')?.dirty ||
-              postVehicleForm.get('image')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('image')?.errors?.['required']"
-          >
-            Please upload a vehicle image.
-          </div>
+        <div *ngIf="postVehicleForm.get('image')?.invalid && (postVehicleForm.get('image')?.dirty || postVehicleForm.get('image')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('image')?.errors?.['required']">Please upload a vehicle image.</div>
         </div>
       </div>
 
       <div class="mb-4">
-        <label for="vehicle-brand" class="block text-sm font-medium text-white"
-          >Select Vehicle Brand</label
-        >
+        <label for="vehicle-brand" class="block text-sm font-medium text-white">Select Vehicle Brand</label>
         <select
           id="vehicle-brand"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           formControlName="brand"
         >
-          <option *ngFor="let brand of listOfBrands" [value]="brand">
-            {{ brand }}
-          </option>
+          <option *ngFor="let brand of listOfBrands" [value]="brand">{{ brand }}</option>
         </select>
-        <div
-          *ngIf="
-            postVehicleForm.get('brand')?.invalid &&
-            (postVehicleForm.get('brand')?.dirty ||
-              postVehicleForm.get('brand')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('brand')?.errors?.['required']"
-          >
-            Please select a vehicle brand.
-          </div>
+        <div *ngIf="postVehicleForm.get('brand')?.invalid && (postVehicleForm.get('brand')?.dirty || postVehicleForm.get('brand')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('brand')?.errors?.['required']">Please select a vehicle brand.</div>
         </div>
       </div>
 
       <div class="mb-4 relative">
-        <label for="vehicle-model" class="block text-sm font-medium text-white"
-          >Vehicle Model</label
-        >
+        <label for="vehicle-model" class="block text-sm font-medium text-white">Vehicle Model</label>
         <input
           type="text"
           id="vehicle-model"
@@ -141,145 +89,69 @@
           formControlName="model"
         />
         <i class="absolute left-2 top-9 text-gray-500 fas fa-car"></i>
-        <div
-          *ngIf="
-            postVehicleForm.get('model')?.invalid &&
-            (postVehicleForm.get('model')?.dirty ||
-              postVehicleForm.get('model')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('model')?.errors?.['required']"
-          >
-            Please enter a vehicle model.
-          </div>
+        <div *ngIf="postVehicleForm.get('model')?.invalid && (postVehicleForm.get('model')?.dirty || postVehicleForm.get('model')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('model')?.errors?.['required']">Please enter a vehicle model.</div>
         </div>
       </div>
 
       <div class="mb-4">
-        <label for="vehicle-type" class="block text-sm font-medium text-white"
-          >Select Type</label
-        >
+        <label for="vehicle-type" class="block text-sm font-medium text-white">Select Type</label>
         <select
           id="vehicle-type"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           formControlName="type"
         >
-          <option *ngFor="let type of listOfType" [value]="type">
-            {{ type }}
-          </option>
+          <option *ngFor="let type of listOfType" [value]="type">{{ type }}</option>
         </select>
-        <div
-          *ngIf="
-            postVehicleForm.get('type')?.invalid &&
-            (postVehicleForm.get('type')?.dirty ||
-              postVehicleForm.get('type')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('type')?.errors?.['required']"
-          >
-            Please select a vehicle type.
-          </div>
+        <div *ngIf="postVehicleForm.get('type')?.invalid && (postVehicleForm.get('type')?.dirty || postVehicleForm.get('type')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('type')?.errors?.['required']">Please select a vehicle type.</div>
         </div>
       </div>
 
       <div class="mb-4">
-        <label for="transmission" class="block text-sm font-medium text-white"
-          >Select Transmission</label
-        >
+        <label for="transmission" class="block text-sm font-medium text-white">Select Transmission</label>
         <select
           id="transmission"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           formControlName="transmission"
         >
-          <option
-            *ngFor="let transmission of listOfTransmission"
-            [value]="transmission"
-          >
-            {{ transmission }}
-          </option>
+          <option *ngFor="let transmission of listOfTransmission" [value]="transmission">{{ transmission }}</option>
         </select>
-        <div
-          *ngIf="
-            postVehicleForm.get('transmission')?.invalid &&
-            (postVehicleForm.get('transmission')?.dirty ||
-              postVehicleForm.get('transmission')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('transmission')?.errors?.['required']"
-          >
-            Please select a transmission type.
-          </div>
+        <div *ngIf="postVehicleForm.get('transmission')?.invalid && (postVehicleForm.get('transmission')?.dirty || postVehicleForm.get('transmission')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('transmission')?.errors?.['required']">Please select a transmission type.</div>
         </div>
       </div>
 
       <div class="mb-4">
-        <label for="year-picker" class="block text-sm font-medium text-white"
-          >Vehicle Year</label
-        >
+        <label for="year-picker" class="block text-sm font-medium text-white">Vehicle Year</label>
         <select
           id="year-picker"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           formControlName="year"
         >
-          <option *ngFor="let year of listOfYears" [value]="year">
-            {{ year }}
-          </option>
+          <option *ngFor="let year of listOfYears" [value]="year">{{ year }}</option>
         </select>
-        <div
-          *ngIf="
-            postVehicleForm.get('year')?.invalid &&
-            (postVehicleForm.get('year')?.dirty ||
-              postVehicleForm.get('year')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('year')?.errors?.['required']"
-          >
-            Please select a vehicle year.
-          </div>
+        <div *ngIf="postVehicleForm.get('year')?.invalid && (postVehicleForm.get('year')?.dirty || postVehicleForm.get('year')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('year')?.errors?.['required']">Please select a vehicle year.</div>
         </div>
       </div>
 
       <div class="mb-4">
-        <label for="vehicle-color" class="block text-sm font-medium text-white"
-          >Select Color</label
-        >
+        <label for="vehicle-color" class="block text-sm font-medium text-white">Select Color</label>
         <select
           id="vehicle-color"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           formControlName="color"
         >
-          <option *ngFor="let color of listOfColor" [value]="color">
-            {{ color }}
-          </option>
+          <option *ngFor="let color of listOfColor" [value]="color">{{ color }}</option>
         </select>
-        <div
-          *ngIf="
-            postVehicleForm.get('color')?.invalid &&
-            (postVehicleForm.get('color')?.dirty ||
-              postVehicleForm.get('color')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('color')?.errors?.['required']"
-          >
-            Please select a vehicle color.
-          </div>
+        <div *ngIf="postVehicleForm.get('color')?.invalid && (postVehicleForm.get('color')?.dirty || postVehicleForm.get('color')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('color')?.errors?.['required']">Please select a vehicle color.</div>
         </div>
       </div>
 
       <div class="mb-4 relative">
-        <label for="rent-price" class="block text-sm font-medium text-white"
-          >Rent Price</label
-        >
+        <label for="rent-price" class="block text-sm font-medium text-white">Rent Price</label>
         <input
           type="number"
           id="rent-price"
@@ -288,28 +160,13 @@
           formControlName="price"
         />
         <i class="absolute left-2 top-9 text-gray-500 fas fa-dollar-sign"></i>
-        <div
-          *ngIf="
-            postVehicleForm.get('price')?.invalid &&
-            (postVehicleForm.get('price')?.dirty ||
-              postVehicleForm.get('price')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('price')?.errors?.['required']"
-          >
-            Please enter a rent price.
-          </div>
+        <div *ngIf="postVehicleForm.get('price')?.invalid && (postVehicleForm.get('price')?.dirty || postVehicleForm.get('price')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('price')?.errors?.['required']">Please enter a rent price.</div>
         </div>
       </div>
 
       <div class="mb-4">
-        <label
-          for="vehicle-description"
-          class="block text-sm font-medium text-white"
-          >Description</label
-        >
+        <label for="vehicle-description" class="block text-sm font-medium text-white">Description</label>
         <textarea
           id="vehicle-description"
           class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -317,19 +174,8 @@
           rows="3"
           placeholder="Enter Vehicle Description"
         ></textarea>
-        <div
-          *ngIf="
-            postVehicleForm.get('description')?.invalid &&
-            (postVehicleForm.get('description')?.dirty ||
-              postVehicleForm.get('description')?.touched)
-          "
-        >
-          <div
-            class="text-red-500 text-sm"
-            *ngIf="postVehicleForm.get('description')?.errors?.['required']"
-          >
-            Please enter a vehicle description.
-          </div>
+        <div *ngIf="postVehicleForm.get('description')?.invalid && (postVehicleForm.get('description')?.dirty || postVehicleForm.get('description')?.touched)">
+          <div class="text-red-500 text-sm" *ngIf="postVehicleForm.get('description')?.errors?.['required']">Please enter a vehicle description.</div>
         </div>
       </div>
 
