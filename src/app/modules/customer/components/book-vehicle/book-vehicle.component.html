@@ -1,0 +1,40 @@
+<div class=" card flex flex-col items-center justify-center h-screen relative">
+    <div class="fixed inset-0">
+      <img src="../../../../../assets/img/1.jpg" alt="Background" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black opacity-60"></div>
+    </div>
+  
+    <div class="card shadow-md rounded-lg overflow-hidden w-full max-w-4xl md:max-w-6xl relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="h-48 md:h-auto overflow-hidden">
+          <img [src]="processedImage" alt="Volvo XC92" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-8 relative">
+          <h2 class="text-3xl font-bold text-primary mb-4">{{ car.brand }} - {{ car.name }}</h2>
+          <p class="text-white mb-6">{{ car.brand }} - {{ car.name }}</p>
+          <p class="text-white mb-6">
+            Price: {{ car.price }} | Color: {{ car.color }} | Transmission: {{ car.transmission }} | Type: {{ car.type }} | Year: {{ car.year }}
+          </p>
+          <div class=" card absolute bottom-0 left-0 right-0  py-4 px-6 rounded-b-lg ">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <input
+                  type="date"
+                  class="card border text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                 
+                />
+                <input
+                  type="date"
+                  class="card border text-white rounded-lg px-4 py-2 ml-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                
+                />
+              </div>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" >
+                Book Car
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

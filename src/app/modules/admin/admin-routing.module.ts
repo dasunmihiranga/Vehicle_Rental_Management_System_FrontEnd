@@ -10,10 +10,10 @@ const routes: Routes = [
     component: AdminDashboardComponent
   },
   {
-    path: "vehicle", component:PostVehicleComponent
+    path: "car", component:PostVehicleComponent
   },
   {
-    path:"vehicle/:id",component:UpdateVehicleComponent
+    path:"car/:id",component:UpdateVehicleComponent
   },
 ];
 
