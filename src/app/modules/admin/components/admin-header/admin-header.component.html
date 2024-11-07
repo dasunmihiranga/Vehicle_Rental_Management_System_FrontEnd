@@ -22,11 +22,14 @@
     </div>
 
     <div [ngClass]="{'hidden': !isMobileMenuOpen, 'block': isMobileMenuOpen}" class="md:hidden">
-        <div class="flex flex-col p-4 space-y-2 bg-surface">
+        <div class="  flex flex-col p-4 space-y-2 bg-surface">
             <!-- Mobile Menu Items -->
             <a routerLink="/" routerLinkActive="active" class="text-text hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-4 py-2">Home</a>
             <a routerLink="/admin/dashboard" routerLinkActive="active"class="text-text hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-4 py-2">Dashboard</a>
-            <a (click)="logout()" class="text-text hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-4 py-2">Login</a>
+            <a routerLink="/admin/vehicle" routerLinkActive="active" class="text-text hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-4 py-2">Post a Vehicle</a>
+            <a class="text-text hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-4 py-2">Booking</a>
+            <a class="text-text hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-4 py-2">search</a>
+            <a (click)="logout()" class="text-text hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-4 py-2">LogOut</a>
         </div>
     </div>
 </nav>
