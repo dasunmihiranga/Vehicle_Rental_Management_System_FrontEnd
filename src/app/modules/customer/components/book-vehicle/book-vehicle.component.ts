@@ -59,9 +59,10 @@ export class BookVehicleComponent {
         this.errorMessage = null;
         this.autoDismissSuccess();
 
+
        
         setTimeout(() => {
-          this.router.navigateByUrl('/customer/dashboard');
+          this.router.navigateByUrl('/customer/my_bookings');
         }, 2000);
       },
       error: (err) => {

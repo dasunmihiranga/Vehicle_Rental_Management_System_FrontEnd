@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path:'book/:id',
     component:BookVehicleComponent
+  },
+  {
+    path:'my_bookings',
+    component:BookVehicleComponent
   }
 ];
 
