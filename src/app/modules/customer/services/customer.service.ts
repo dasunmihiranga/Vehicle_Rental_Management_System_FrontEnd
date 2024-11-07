@@ -24,7 +24,9 @@ export class CustomerService {
   }
 
   bookCar(bookACar:any):Observable<any>{
-    return this.http.post(`${BASE_URL}/api/customer/car/book${bookACar}`,{
+    console.log(bookACar);
+    
+    return this.http.post(`${BASE_URL}/api/customer/car/book`,bookACar,{
       headers : this.createAuthorizationHeader()
     })
   }
