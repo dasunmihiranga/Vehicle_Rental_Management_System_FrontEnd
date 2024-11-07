@@ -58,11 +58,6 @@ export class PostVehicleComponent implements OnInit {
     console.log(this.postVehicleForm.value);
   
     const formData: FormData = new FormData();
-
-    const year = this.postVehicleForm.get('year')?.value;
-  const yearAsDate = new Date(parseInt(year), 0, 1);
-   
-    
     formData.append('brand', this.postVehicleForm.get('brand')?.value || '');
     formData.append('colour', this.postVehicleForm.get('colour')?.value || '');
     formData.append('name', this.postVehicleForm.get('name')?.value || '');

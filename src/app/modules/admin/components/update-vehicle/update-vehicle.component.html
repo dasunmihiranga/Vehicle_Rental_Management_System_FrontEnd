@@ -1,201 +1,233 @@
-<div class="fixed inset-0 ">
-    <img
-      src="../../../../../assets/img/1.jpg"
-      alt="Background"
-      class="w-full h-full object-cover"
-    />
-    <!-- Dark Overlay -->
-    <div class="absolute inset-0 bg-black opacity-60"></div>
-  </div>
+<div class="fixed inset-0">
+  <img
+    src="../../../../../assets/img/1.jpg"
+    alt="Background"
+    class="w-full h-full object-cover"
+  />
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black opacity-60"></div>
+</div>
 
-  
-  
-  <div class="flex items-center justify-center  mt-10 min-h-screen  relative z-10">
-  
-    <div class="justify-center  absolute  z-10 z100">
-      <div
-        *ngIf="successMessage"
-        @messageAnimation
-        class="flex w-full max-w-sm overflow-hidden bg-emerald-500 rounded-lg shadow-md dark:bg-gray-800 mb-4 relative z-10"
-      >
-        <div class="flex items-center justify-center w-12 bg-emerald-600">
-          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333"
-            />
-          </svg>
-        </div>
-        <div class="px-4 py-2 -mx-3">
-          <div class="mx-3">
-            <span class="font-semibold text-white">Success</span>
-            <p class="text-sm text-gray-100">{{ successMessage }}</p>
-          </div>
-        </div>
+<div class="flex items-center justify-center mt-10 min-h-screen relative z-10">
+  <!-- Success Message -->
+  <div class="justify-center absolute z-10">
+    <div
+      *ngIf="successMessage"
+      class="flex w-full max-w-sm overflow-hidden bg-emerald-500 rounded-lg shadow-md dark:bg-gray-800 mb-4 relative z-10"
+    >
+      <div class="flex items-center justify-center w-12 bg-emerald-600">
+        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333"
+          />
+        </svg>
       </div>
-    
-      <div
-        *ngIf="errorMessage"
-        @messageAnimation
-        class="flex w-full max-w-sm overflow-hidden bg-red-500 rounded-lg shadow-md dark:bg-gray-800 mb-4"
-      >
-        <div class="flex items-center justify-center w-12 bg-red-600">
-          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM20 29.1667V29.1667C18.8833 29.1667 17.5 27.8333 17.5 26.6667C17.5 25.5 18.8833 24.1667 20 24.1667C21.1167 24.1667 22.5 25.5 22.5 26.6667C22.5 27.8333 21.1167 29.1667 20 29.1667ZM19.5833 15H20.4167V22.5H19.5833V15Z"
-            />
-          </svg>
-        </div>
-        <div class="px-4 py-2 -mx-3">
-          <div class="mx-3">
-            <span class="font-semibold text-white">Error</span>
-            <p class="text-sm text-gray-100">{{ errorMessage }}</p>
-          </div>
+      <div class="px-4 py-2 -mx-3">
+        <div class="mx-3">
+          <span class="font-semibold text-white">Success</span>
+          <p class="text-sm text-gray-100">{{ successMessage }}</p>
         </div>
       </div>
     </div>
-  
-    <div class="card bg-surface shadow-md rounded-lg p-6 w-full max-w-md transform scale-90 transition-transform duration-300 ease-in-out">
-      <h2 class="text-xl font-bold text-center text-white mb-4">Add Vehicle</h2>
-  
-      <form [formGroup]="updateVehicleForm" (ngSubmit)="updateVehicle()">
-        <div *ngIf="existingImage" class="mb-4 text-center">
-          <label class="block mb-2 text-sm font-medium text-white" for="vehicle_image" >
-            <img class="w-24 h-24 rounded-full object-cover mx-auto" src={{existingImage}} alt="profile" />
+
+    <!-- Error Message -->
+    <div
+      *ngIf="errorMessage"
+      class="flex w-full max-w-sm overflow-hidden bg-red-500 rounded-lg shadow-md dark:bg-gray-800 mb-4"
+    >
+      <div class="flex items-center justify-center w-12 bg-red-600">
+        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM20 29.1667V29.1667C18.8833 29.1667 17.5 27.8333 17.5 26.6667C17.5 25.5 18.8833 24.1667 20 24.1667C21.1167 24.1667 22.5 25.5 22.5 26.6667C22.5 27.8333 21.1167 29.1667 20 29.1667ZM19.5833 15H20.4167V22.5H19.5833V15Z"
+          />
+        </svg>
+      </div>
+      <div class="px-4 py-2 -mx-3">
+        <div class="mx-3">
+          <span class="font-semibold text-white">Error</span>
+          <p class="text-sm text-gray-100">{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Form Card -->
+  <div class="card bg-surface shadow-md rounded-lg p-6 w-full max-w-md transform scale-90 transition-transform duration-300 ease-in-out">
+    <h2 class="text-xl font-bold text-center text-white mb-4">Update Vehicle</h2>
+
+    <form [formGroup]="updateVehicleForm" (ngSubmit)="updateVehicle()">
+      <!-- Image Upload Section -->
+      <div class="mb-4 text-center">
+        <div class="mb-4">
+          <img 
+            *ngIf="existingImage || imagePreview"
+            class="w-24 h-24 rounded-full object-cover mx-auto" 
+            [src]="imagePreview || existingImage" 
+            alt="Vehicle preview"
+          />
+        </div>
+
+        <div class="mt-4">
+          <label 
+            class="block mb-2 text-sm font-medium text-white"
+            for="vehicle_image"
+          >
+            {{imagePreview ? 'Change Image' : 'Upload Image'}}
           </label>
-         <!-- <input
+          <input
             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-            placeholder="Upload Vehicle Image"
-            accept="image/x-png,image/gif,image/jpeg"
-            (change)="onFileSelected($event)"
             id="vehicle_image"
             type="file"
-          /> -->
-          <!-- <div *ngIf="updateVehicleForm.get('image')?.invalid && (updateVehicleForm.get('image')?.dirty || updateVehicleForm.get('image')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('image')?.errors?.['required']">Please upload a vehicle image.</div>
-          </div> -->
+            accept="image/x-png,image/gif,image/jpeg"
+            (change)="onFileSelected($event)"
+          />
         </div>
-  
-        <div class="mb-4">
-          <label for="vehicle-brand" class="block text-sm font-medium text-white">Select Vehicle Brand</label>
-          <select
-            id="vehicle-brand"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            formControlName="brand"
-          >
-            <option *ngFor="let brand of listOfBrands" [value]="brand">{{ brand }}</option>
-          </select>
-          <div *ngIf="updateVehicleForm.get('brand')?.invalid && (updateVehicleForm.get('brand')?.dirty || updateVehicleForm.get('brand')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('brand')?.errors?.['required']">Please select a vehicle brand.</div>
-          </div>
+      </div>
+
+      <!-- Brand Selection -->
+      <div class="mb-4">
+        <label for="vehicle-brand" class="block text-sm font-medium text-white">Vehicle Brand</label>
+        <select
+          id="vehicle-brand"
+          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          formControlName="brand"
+        >
+          <option value="" disabled>Select Brand</option>
+          <option *ngFor="let brand of listOfBrands" [value]="brand">{{ brand }}</option>
+        </select>
+        <div *ngIf="updateVehicleForm.get('brand')?.invalid && updateVehicleForm.get('brand')?.touched" 
+             class="text-red-500 text-sm mt-1">
+          Please select a vehicle brand.
         </div>
-  
-        <div class="mb-4 relative">
-          <label for="vehicle-model" class="block text-sm font-medium text-white">Vehicle Model</label>
+      </div>
+
+      <!-- Model Input -->
+      <div class="mb-4 relative">
+        <label for="vehicle-model" class="block text-sm font-medium text-white">Vehicle Model</label>
+        <div class="relative">
+          <i class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 fas fa-car"></i>
           <input
             type="text"
             id="vehicle-model"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pl-10"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 pl-10 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Enter Vehicle Model"
             formControlName="name"
           />
-          <i class="absolute left-2 top-9 text-gray-500 fas fa-car"></i>
-          <div *ngIf="updateVehicleForm.get('model')?.invalid && (updateVehicleForm.get('model')?.dirty || updateVehicleForm.get('model')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('model')?.errors?.['required']">Please enter a vehicle model.</div>
-          </div>
         </div>
-  
-        <div class="mb-4">
-          <label for="vehicle-type" class="block text-sm font-medium text-white">Select Type</label>
-          <select
-            id="vehicle-type"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            formControlName="type"
-          >
-            <option *ngFor="let type of listOfType" [value]="type">{{ type }}</option>
-          </select>
-          <div *ngIf="updateVehicleForm.get('type')?.invalid && (updateVehicleForm.get('type')?.dirty || updateVehicleForm.get('type')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('type')?.errors?.['required']">Please select a vehicle type.</div>
-          </div>
+        <div *ngIf="updateVehicleForm.get('name')?.invalid && updateVehicleForm.get('name')?.touched" 
+             class="text-red-500 text-sm mt-1">
+          Please enter a vehicle model.
         </div>
-  
-        <div class="mb-4">
-          <label for="transmission" class="block text-sm font-medium text-white">Select Transmission</label>
-          <select
-            id="transmission"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            formControlName="transmission"
-          >
-            <option *ngFor="let transmission of listOfTransmission" [value]="transmission">{{ transmission }}</option>
-          </select>
-          <div *ngIf="updateVehicleForm.get('transmission')?.invalid && (updateVehicleForm.get('transmission')?.dirty || updateVehicleForm.get('transmission')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('transmission')?.errors?.['required']">Please select a transmission type.</div>
-          </div>
+      </div>
+
+      <!-- Vehicle Type -->
+      <div class="mb-4">
+        <label for="vehicle-type" class="block text-sm font-medium text-white">Vehicle Type</label>
+        <select
+          id="vehicle-type"
+          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          formControlName="type"
+        >
+          <option value="" disabled>Select Type</option>
+          <option *ngFor="let type of listOfType" [value]="type">{{ type }}</option>
+        </select>
+        <div *ngIf="updateVehicleForm.get('type')?.invalid && updateVehicleForm.get('type')?.touched" 
+             class="text-red-500 text-sm mt-1">
+          Please select a vehicle type.
         </div>
-  
-        <div class="mb-4">
-          <label for="year-picker" class="block text-sm font-medium text-white">Vehicle Year</label>
-          <select
-            id="year-picker"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            formControlName="year"
-          >
-            <option *ngFor="let year of listOfYears" [value]="year">{{ year }}</option>
-          </select>
-          <div *ngIf="updateVehicleForm.get('year')?.invalid && (updateVehicleForm.get('year')?.dirty || updateVehicleForm.get('year')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('year')?.errors?.['required']">Please select a vehicle year.</div>
-          </div>
+      </div>
+
+      <!-- Transmission -->
+      <div class="mb-4">
+        <label for="transmission" class="block text-sm font-medium text-white">Transmission</label>
+        <select
+          id="transmission"
+          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          formControlName="transmission"
+        >
+          <option value="" disabled>Select Transmission</option>
+          <option *ngFor="let transmission of listOfTransmission" [value]="transmission">{{ transmission }}</option>
+        </select>
+        <div *ngIf="updateVehicleForm.get('transmission')?.invalid && updateVehicleForm.get('transmission')?.touched" 
+             class="text-red-500 text-sm mt-1">
+          Please select a transmission type.
         </div>
-  
-        <div class="mb-4">
-          <label for="vehicle-color" class="block text-sm font-medium text-white">Select Color</label>
-          <select
-            id="vehicle-color"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            formControlName="colour"
-          >
-            <option *ngFor="let color of listOfColor" [value]="color">{{ color }}</option>
-          </select>
-          <div *ngIf="updateVehicleForm.get('color')?.invalid && (updateVehicleForm.get('color')?.dirty || updateVehicleForm.get('color')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('color')?.errors?.['required']">Please select a vehicle color.</div>
-          </div>
+      </div>
+
+      <!-- Year Selection -->
+      <div class="mb-4">
+        <label for="year-picker" class="block text-sm font-medium text-white">Vehicle Year</label>
+        <select
+          id="year-picker"
+          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          formControlName="year"
+        >
+          <option value="" disabled>Select Year</option>
+          <option *ngFor="let year of listOfYears" [value]="year">{{ year }}</option>
+        </select>
+        <div *ngIf="updateVehicleForm.get('year')?.invalid && updateVehicleForm.get('year')?.touched" 
+             class="text-red-500 text-sm mt-1">
+          Please select a vehicle year.
         </div>
-  
-        <div class="mb-4 relative">
-          <label for="rent-price" class="block text-sm font-medium text-white">Rent Price</label>
+      </div>
+
+      <!-- Color Selection -->
+      <div class="mb-4">
+        <label for="vehicle-color" class="block text-sm font-medium text-white">Vehicle Color</label>
+        <select
+          id="vehicle-color"
+          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          formControlName="colour"
+        >
+          <option value="" disabled>Select Color</option>
+          <option *ngFor="let color of listOfColor" [value]="color">{{ color }}</option>
+        </select>
+        <div *ngIf="updateVehicleForm.get('colour')?.invalid && updateVehicleForm.get('colour')?.touched" 
+             class="text-red-500 text-sm mt-1">
+          Please select a vehicle color.
+        </div>
+      </div>
+
+      <!-- Price Input -->
+      <div class="mb-4 relative">
+        <label for="rent-price" class="block text-sm font-medium text-white">Rent Price</label>
+        <div class="relative">
+          <i class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 fas fa-dollar-sign"></i>
           <input
             type="number"
             id="rent-price"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pl-10"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 pl-10 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Enter Rent Price"
             formControlName="price"
           />
-          <i class="absolute left-2 top-9 text-gray-500 fas fa-dollar-sign"></i>
-          <div *ngIf="updateVehicleForm.get('price')?.invalid && (updateVehicleForm.get('price')?.dirty || updateVehicleForm.get('price')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('price')?.errors?.['required']">Please enter a rent price.</div>
-          </div>
         </div>
-  
-        <div class="mb-4">
-          <label for="vehicle-description" class="block text-sm font-medium text-white">Description</label>
-          <textarea
-            id="vehicle-description"
-            class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            formControlName="description"
-            rows="3"
-            placeholder="Enter Vehicle Description"
-          ></textarea>
-          <div *ngIf="updateVehicleForm.get('description')?.invalid && (updateVehicleForm.get('description')?.dirty || updateVehicleForm.get('description')?.touched)">
-            <div class="text-red-500 text-sm" *ngIf="updateVehicleForm.get('description')?.errors?.['required']">Please enter a vehicle description.</div>
-          </div>
+        <div *ngIf="updateVehicleForm.get('price')?.invalid && updateVehicleForm.get('price')?.touched" 
+             class="text-red-500 text-sm mt-1">
+          Please enter a valid rent price.
         </div>
-  
-        <button
-          type="submit"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
-          [disabled]="updateVehicleForm.invalid"
-        >
-          Update
-        </button>
-      </form>
-    </div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-4">
+        <label for="vehicle-description" class="block text-sm font-medium text-white">Description</label>
+        <textarea
+          id="vehicle-description"
+          class="mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          rows="3"
+          placeholder="Enter Vehicle Description"
+          formControlName="description"
+        ></textarea>
+        
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200"
+        
+      >
+        Update Vehicle
+      </button>
+    </form>
   </div>
+</div>
