@@ -7,6 +7,7 @@ import { CustomerHeaderComponent } from './components/customer-header/customer-h
 import { BookVehicleComponent } from './components/book-vehicle/book-vehicle.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { MyBookingsComponent } from './components/my-bookings/my-bookings.compon
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class CustomerModule { }

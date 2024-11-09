@@ -1,0 +1,7 @@
+.card{
+    flex-direction: column;
+    background-color: rgba(53, 53, 53, 0.767); /* Light transparent background */
+}
+.tbodyHover > tr:hover{
+    background-color: rgba(77, 75, 75, 0.9); /* Darker transparent background for hover effect */
+}

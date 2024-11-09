@@ -31,7 +31,7 @@ export class CustomerService {
   }
 
   getBookingByUserId():Observable<any>{
-    return this.http.get(`${BASE_URL}/api/customer/car/bookings/${StorageService.getUserId}`,{
+    return this.http.get(`${BASE_URL}/api/customer/car/booking/${StorageService.getUserId()}`,{
       headers : this.createAuthorizationHeader()
     })
   }

@@ -8,6 +8,7 @@ import { PostVehicleComponent } from './components/post-vehicle/post-vehicle.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
+import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
 
 
 
@@ -16,6 +17,7 @@ import { UpdateVehicleComponent } from './components/update-vehicle/update-vehic
     AdminDashboardComponent,
     PostVehicleComponent,
     UpdateVehicleComponent,
+    GetBookingsComponent,
 
     
   ],

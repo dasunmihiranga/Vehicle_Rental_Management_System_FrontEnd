@@ -3,12 +3,24 @@ import { CustomerService } from '../../services/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/auth/services/storage/storage.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-book-vehicle',
   templateUrl: './book-vehicle.component.html',
-  styleUrls: ['./book-vehicle.component.scss']
+  styleUrls: ['./book-vehicle.component.scss'],
+  animations: [
+    trigger('messageAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-20px)' }),
+        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      transition(':leave', [
+        animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(-20px)' })),
+      ]),
+    ]),
+  ],
 })
 export class BookVehicleComponent {
 
