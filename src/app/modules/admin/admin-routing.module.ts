@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { PostVehicleComponent } from './components/post-vehicle/post-vehicle.component';
 import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
+import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path:"car/:id",component:UpdateVehicleComponent
+  },
+  {
+    path:"bookings",component:GetBookingsComponent
   },
 ];
 

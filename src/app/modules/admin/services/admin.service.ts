@@ -40,6 +40,17 @@ export class AdminService {
     });
   }
 
+  getCarBookings():Observable<any>{
+    return this.http.get(`${BASE_URL}/api/admin/car/bookings`,{
+      headers : this.createAuthorizationHeader()
+    })
+  }
+  changeBookingStatus(bookingId:number,status:string):Observable<any>{
+    return this.http.get(`${BASE_URL}/api/admin/car/booking/${bookingId}/${status}`,{
+      headers : this.createAuthorizationHeader()
+    })
+  }
+
 
 
   createAuthorizationHeader(): HttpHeaders {

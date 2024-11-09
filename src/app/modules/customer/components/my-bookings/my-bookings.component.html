@@ -35,8 +35,12 @@
                 <span 
                   class="px-3 py-1 text-xs font-medium rounded-full"
                   [ngClass]="{
-                    'bg-red-100 text-red-600': booking.bookCarStatus === 'PENDING',
-                    'bg-green-100 text-green-600': booking.bookCarStatus === 'CONFIRMED'
+                    'bg-yellow-100 text-yellow-600':
+                    booking.bookCarStatus=='PENDING',
+                  'bg-red-100 text-red-600':
+                    booking.bookCarStatus === 'REJECTED',
+                  'bg-green-100 text-green-600':
+                    booking.bookCarStatus === 'APPROVED'
                   }"
                 >
                   {{booking.bookCarStatus}}
@@ -54,8 +58,12 @@
           <span 
             class="px-3 py-1 text-xs font-medium rounded-full"
             [ngClass]="{
-              'bg-red-100 text-red-600': booking.bookCarStatus === 'PENDING',
-              'bg-green-100 text-green-600': booking.bookCarStatus === 'CONFIRMED'
+             'bg-yellow-100 text-yellow-600':
+                    booking.bookCarStatus == 'PENDING',
+                  'bg-red-100 text-red-600':
+                    booking.bookCarStatus === 'REJECTED',
+                  'bg-green-100 text-green-600':
+                    booking.bookCarStatus === 'APPROVED'
             }"
           >
             {{booking.bookCarStatus}}
