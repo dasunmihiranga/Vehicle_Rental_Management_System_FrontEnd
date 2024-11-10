@@ -9,7 +9,7 @@
   </div>
 
 <div class="  mt-32 w-full max-w-4xl mx-auto relative z-10">
-    <div class=" card rounded-lg shadow-lg p-6">
+    <div class=" bg-white/5 backdrop-blur-md rounded-lg shadow-lg p-6">
         <!-- Search Form -->
         <div [formGroup]="searchCarForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Brand Select -->
@@ -142,7 +142,7 @@
     </div>
   </div>
 
-    <div class=" card max-w-3xl mx-auto my-4 bg-white shadow-md rounded-lg overflow-hidden relative z-10" *ngFor="let car of cars">
+    <div class=" bg-white/5 backdrop-blur-md max-w-3xl mx-auto my-4 bg-white shadow-md rounded-lg overflow-hidden relative z-10" *ngFor="let car of cars">
         <div class="md:flex">
           <!-- Car Image -->
           <div class="md:w-1/3">

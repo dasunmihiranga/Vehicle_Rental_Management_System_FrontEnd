@@ -8,7 +8,7 @@
       class="w-full h-full object-cover"
     />
     <!-- Dark Overlay -->
-    <div class="absolute inset-0 bg-background bg-opacity-60"></div>
+    <div class="absolute inset-0bg-background bg-opacity-60"></div>
   </div>
   <div class="container px-6 mx-auto flex flex-col items-center relative z-10">
     <!-- Section Title -->
@@ -71,7 +71,7 @@
     <!-- Sign-Up Form -->
     <form
       [formGroup]="signupForm"
-      class="card w-full max-w-md bg-surface p-8 rounded-lg shadow-lg"
+      class=" bg-white/5 backdrop-blur-md  w-full max-w-md bg-surface p-8 rounded-lg shadow-lg"
     >
       <!-- Email -->
       <div class="relative flex items-center mb-4">
@@ -234,7 +234,7 @@
       <button
         type="button"
         (click)="register()"
-        class="w-full py-3 text-white bg-primary hover:bg-blue-700 rounded-lg focus:outline-none"
+        class="w-full py-3 text-white bg-white/5 backdrop-blur-md   hover:bg-blue-700 rounded-lg focus:outline-none"
       >
         Sign Up
       </button>

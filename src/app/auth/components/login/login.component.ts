@@ -66,7 +66,7 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        this.errorMessage = err.error.message || "Login failed!";
+        this.errorMessage = "Login failed!";
         this.successMessage = null;
         this.autoDismissError(); // Call the auto dismiss method
       }
