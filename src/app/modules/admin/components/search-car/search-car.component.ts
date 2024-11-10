@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
-import { Router } from '@angular/router';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-admin-dashboard',
-  templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.scss'],
+  selector: 'app-search-car',
+  templateUrl: './search-car.component.html',
+  styleUrls: ['./search-car.component.scss'],
   animations: [
     trigger('messageAnimation', [
       transition(':enter', [
@@ -19,42 +19,69 @@ import { animate, style, transition, trigger } from '@angular/animations';
     ]),
   ],
 })
-export class AdminDashboardComponent {
-  constructor(private adminService: AdminService, private router: Router) {}
+export class SearchCarComponent {
+
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
-  cars: any = [];
+  searchCarForm !: FormGroup;
+  cars:any=[];
+  listOfBrands = [
+    'BMW', 'AUDI', 'FERRARI', 'TESLA', 'VOLVO', 
+    'HONDA', 'FORD', 'TOYOTA', 'NISSAN', 'HYUNDAI', 
+    'LEXUS', 'KIA'
+  ];
+  
+  listOfType = ['Petrol', 'Hybrid', 'Diesel', 'Electric'];
+  
+  listOfColor = [
+    'Red', 'White', 'Blue', 'Black', 
+    'Orange', 'Grey', 'Silver'
+  ];
+  
+  listOfTransmission = ['Manual', 'Auto'];
+  
 
-  ngOnInit() {
-    this.getAllCars();
+  constructor(private fb:FormBuilder,
+    private adminService:AdminService
+  ){
+    this.searchCarForm=fb.group({
+      brand:[null],
+      type:[null],
+      transmission:[null],
+      colour:[null],
+    });
   }
 
-  getAllCars() {
-    this.adminService.getAllCars().subscribe((res: any[]) => {
+  searchCar(){
+
+    this.cars = [];
+  
+    console.log(this.searchCarForm.value);
+    this.adminService.searchCar(this.searchCarForm.value).subscribe((res:any)=>{
       console.log(res);
-      res.forEach((element: any) => {
+      res.carList.forEach((element: any) => {
         element.processedImg =
           'data:image/jpeg;base64,' + element.returnedImage;
         this.cars.push(element);
       });
-    });
+      // Populate the car list with the returned data
+    })
+
   }
 
   deleteCar(id: number) {
-  
+   
+
+
     this.adminService.deleteCar(id).subscribe({
       next: () => {
-        this.cars = [];
-        this.getAllCars();
         this.successMessage = 'Deleted  successfully!';
+        this.cars = [];
         this.errorMessage = null;
         this.autoDismissSuccess(); // Call the auto dismiss method
 
-        // Navigate to the login page after a delay to show the success message
-        setTimeout(() => {
-          this.router.navigateByUrl('/admin/dashboard');
-        }, 2000); // Delay of 5 seconds for the success message
+        
       },
       error: (err) => {
         this.errorMessage = err.error.message || 'Deleted failed!';
@@ -76,4 +103,6 @@ export class AdminDashboardComponent {
       this.errorMessage = null;
     }, 5000); // 5000 milliseconds = 5 seconds
   }
+
+
 }

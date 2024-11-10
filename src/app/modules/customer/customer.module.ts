@@ -8,6 +8,7 @@ import { BookVehicleComponent } from './components/book-vehicle/book-vehicle.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchCarComponent } from './components/search-car/search-car.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomerDashboardComponent,
     BookVehicleComponent,
     MyBookingsComponent,
+    SearchCarComponent,
   ],
   imports: [
     CommonModule,

@@ -51,6 +51,12 @@ export class AdminService {
     })
   }
 
+  searchCar(searchCarDto:any):Observable<any>{
+    return this.http.post(`${BASE_URL}/api/admin/car/search`,searchCarDto,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
+
 
 
   createAuthorizationHeader(): HttpHeaders {

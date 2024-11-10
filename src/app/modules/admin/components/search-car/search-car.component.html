@@ -1,0 +1,180 @@
+<div class="fixed inset-0">
+    <img
+      src="../../../../../assets/img/1.jpg"
+      alt="Background"
+      class="w-full h-full object-cover"
+    />
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black opacity-60"></div>
+  </div>
+
+<div class="  mt-32 w-full max-w-4xl mx-auto relative z-10">
+    <div class=" card rounded-lg shadow-lg p-6">
+        <!-- Search Form -->
+        <div [formGroup]="searchCarForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Brand Select -->
+            <div class="flex flex-col space-y-1">
+                <label for="brand" class="text-white font-medium">Brand:</label>
+                <div class="relative">
+                    <select id="brand" formControlName="brand" class=" card1 w-full px-4 py-2 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">Select a Brand</option>
+                        <option *ngFor="let brand of listOfBrands" value={{brand}}>{{brand}}</option>
+
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Type Select -->
+            <div class="flex flex-col space-y-1">
+                <label for="type" class="text-white font-medium">Type:</label>
+                <div class="relative">
+                    <select id="type" formControlName="type" class=" card1 w-full px-4 py-2   rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">Select a Type</option>
+                        <option *ngFor="let type of listOfType" value={{type}}>{{type}}</option>
+      
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <svg class="w-4 h-4 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Select -->
+            <div class="flex flex-col space-y-1">
+                <label for="color" class="text-white font-medium">Color:</label>
+                <div class="relative">
+                    <select id="color" formControlName="colour" class="card1 w-full px-4 py-2  rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">Select a Color</option>
+                        <option *ngFor="let colour of listOfColor" value={{colour}}>{{colour}}</option>
+    
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transmission Select -->
+            <div class="flex flex-col space-y-1">
+                <label for="transmission" class="text-white font-medium">Transmission:</label>
+                <div class="relative">
+                    <select id="transmission" formControlName="transmission" class=" card1 w-full px-4 py-2  rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">Select a Transmission</option>
+                        
+                        <option *ngFor="let transmission of listOfTransmission" value={{transmission}}>{{transmission}}</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Button -->
+        <div class="mt-6">
+            <button (click)="searchCar()" type="button" class="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                Search Car
+            </button>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-center  max-w-sm  relative z-10 z100">
+        <!-- Alert Messages -->
+         <!-- Success Message -->
+      <div
+      *ngIf="successMessage"
+      @messageAnimation
+      class="flex w-full bg-emerald-500 rounded-lg shadow-md mb-4"
+    >
+      <div class="flex items-center justify-center w-12 bg-emerald-600">
+        <svg
+          class="w-6 h-6 text-white fill-current"
+          viewBox="0 0 40 40"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"
+          />
+        </svg>
+      </div>
+      <div class="px-4 py-2 -mx-3">
+        <div class="mx-3">
+          <span class="font-semibold text-white">Success</span>
+          <p class="text-sm text-gray-100">{{ successMessage }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div
+      *ngIf="errorMessage"
+      @messageAnimation
+      class="flex w-full bg-red-500 rounded-lg shadow-md mb-4"
+    >
+      <div class="flex items-center justify-center w-12 bg-red-600">
+        <svg
+          class="w-6 h-6 text-white fill-current"
+          viewBox="0 0 40 40"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM20 29.1667V29.1667C18.8833 29.1667 17.5 27.8333 17.5 26.6667C17.5 25.5 18.8833 24.1667 20 24.1667C21.1167 24.1667 22.5 25.5 22.5 26.6667C22.5 27.8333 21.1167 29.1667 20 29.1667ZM19.5833 15H20.4167V22.5H19.5833V15Z"
+          />
+        </svg>
+      </div>
+      <div class="px-4 py-2 -mx-3">
+        <div class="mx-3">
+          <span class="font-semibold text-white">Error</span>
+          <p class="text-sm text-gray-100">{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class=" card max-w-3xl mx-auto my-4 bg-white shadow-md rounded-lg overflow-hidden relative z-10" *ngFor="let car of cars">
+        <div class="md:flex">
+          <!-- Car Image -->
+          <div class="md:w-1/3">
+            <img src={{car.processedImg}} alt="Car Image" class="w-full h-full object-cover">
+          </div>
+      
+          <!-- Car Details -->
+          <div class="md:w-2/3 p-4">
+            <!-- Title and Subtitle -->
+            <h3 class="text-xl font-semibold text-blue-600">{{car.brand}} - {{car.name}} </h3>
+            <p class="text-white">{{car.brand}} - {{car.name}}</p>
+      
+            <!-- Car Specifications -->
+            <div class="my-2 text-sm text-white">
+              <span class="font-semibold">Price:</span> ${{car.price}}
+              <span class="mx-2">|</span>
+              <span class="font-semibold">Color:</span> {{car.colour}}
+              <span class="mx-2">|</span>
+              <span class="font-semibold">Transmission:</span> {{car.transmission}}
+              <span class="mx-2">|</span>
+              <span class="font-semibold">Type:</span> {{car.type}}
+              <span class="mx-2">|</span>
+              <span class="font-semibold">Year:</span> {{car.year}}
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex space-x-4 mt-4">
+                <button routerLink="/admin/car/{{car.id}}" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">Update</button>
+                <button (click)="deleteCar(car.id)" class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600">Delete</button>
+            </div>
+ 
+          </div>
+        </div>
+      </div>
+</div>
