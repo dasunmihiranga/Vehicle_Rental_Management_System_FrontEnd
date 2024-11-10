@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -10,71 +10,105 @@ import { trigger, transition, style, animate } from '@angular/animations';
     trigger('messageAnimation', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(-20px)' }),
-        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        ),
       ]),
       transition(':leave', [
-        animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(-20px)' })),
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-20px)' })
+        ),
       ]),
     ]),
   ],
 })
-export class GetBookingsComponent {
-
-  bookings:any;
+export class GetBookingsComponent implements OnInit {
+  bookings: any = [];
+  filterBookings: any = [];
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
+  constructor(private adminService: AdminService) {}
 
-  constructor(private adminService: AdminService){
+  ngOnInit(): void {
     this.getBookings();
   }
 
-  getBookings(){
-    this.adminService.getCarBookings().subscribe((res)=>{
-      console.log(res);
-      res.forEach((resElement: { fromDate: string | number | Date; toDate: string | number | Date }) => {
-        resElement.fromDate = new Date(resElement.fromDate).toISOString().split("T")[0];
-        resElement.toDate = new Date(resElement.toDate).toISOString().split("T")[0];
-    });
-      this.bookings = res;
+  private resetBookings(): void {
+    this.bookings = [];
+    this.filterBookings = [];
+  }
 
+  private formatDate(date: string | number | Date): string {
+    try {
+      return new Date(date).toISOString().split('T')[0];
+    } catch (error) {
+      return String(date);
+    }
+  }
+
+  getBookings(): void {
+    this.resetBookings();
+    
+    this.adminService.getCarBookings().subscribe({
+      next: (res: any) => {
+        // Format dates for all bookings
+        res.forEach((booking: any) => {
+          booking.fromDate = this.formatDate(booking.fromDate);
+          booking.toDate = this.formatDate(booking.toDate);
+        });
+
+        // Separate pending and non-pending bookings
+        res.forEach((booking: any) => {
+          if (booking.bookCarStatus === 'PENDING') {
+            this.bookings.push(booking);
+          } else {
+            this.filterBookings.push(booking);
+          }
+        });
+      },
+      error: (err) => {
+        this.errorMessage = 'Failed to fetch bookings';
+        this.autoDismissError();
+      }
     });
   }
 
-  changeBookingStatus(id: number, status: string){
-      console.log(id ,status);
-
-
-      this.adminService.changeBookingStatus(id,status).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.successMessage = 'Booking Status changed successfully';
+  changeBookingStatus(id: number, status: string): void {
+    // Find the booking that's being updated
+    const bookingToMove = this.bookings.find((booking: any) => booking.id === id);
+    
+    this.adminService.changeBookingStatus(id, status).subscribe({
+      next: (res) => {
+        this.successMessage = 'Booking Status changed successfully';
+        this.errorMessage = null;
+        this.autoDismissSuccess();
+        
+        // Refresh the lists to ensure synchronization with backend
+        setTimeout(() => {
+          this.resetBookings();
           this.getBookings();
-          this.errorMessage = null;
-          this.autoDismissSuccess();
-        },
-        error: (err) => {
-          this.errorMessage = 'Something went wrong'|| err.error.message;
-          this.successMessage = null;
-          this.autoDismissError(); // Call the auto dismiss method
-        },
-      });
-
-      
+        }, 1000);
+      },
+      error: (err) => {
+        this.errorMessage = err.error?.message || 'Something went wrong';
+        this.successMessage = null;
+        this.autoDismissError();
+      },
+    });
   }
-  
-  autoDismissSuccess() {
+
+  autoDismissSuccess(): void {
     setTimeout(() => {
       this.successMessage = null;
-    }, 3000); 
+    }, 1000);
   }
 
-  // Auto-dismiss error message after 5 seconds
-  autoDismissError() {
+  autoDismissError(): void {
     setTimeout(() => {
       this.errorMessage = null;
     }, 5000);
   }
-
-
 }
