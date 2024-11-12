@@ -1,3 +1,9 @@
 .card{
     background-color: rgba(53, 53, 53, 0.767); /* Light transparent background */
 }
+
+#title {
+    background: linear-gradient(to right, #3b82f6, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

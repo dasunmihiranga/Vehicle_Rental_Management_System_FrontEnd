@@ -1,98 +1,73 @@
+<!-- Background and Overlay -->
 <div class="fixed inset-0">
-    <img
-      src="../../../../assets/img/1.jpg"
-      alt="Background"
-      class="w-full h-full object-cover"
-    />
-    <div class="absolute inset-0 bg-black opacity-60"></div>
-  </div>
+  <img src="../../../../assets/img/1.jpg" alt="Background" class="w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-black opacity-60"></div>
+</div>
 
-<div class=" mt-32  relative z-10">
-    <div class="flex items-center justify-center  max-w-sm mt-80 relative z-10 z100">
-        <!-- Alert Messages -->
-         <!-- Success Message -->
-      <div
-      *ngIf="successMessage"
-      @messageAnimation
-      class="flex w-full bg-emerald-500 rounded-lg shadow-md mb-4"
-    >
+<!-- Main Content -->
+<div class="relative z-10 mt-32">
+  <!-- Alert Section -->
+  <div class="flex flex-col items-center justify-center max-w-sm mx-auto mb-4">
+    <!-- Success Message -->
+    <div  *ngIf="successMessage" class="flex w-full bg-emerald-500 rounded-lg shadow-md mb-4">
       <div class="flex items-center justify-center w-12 bg-emerald-600">
-        <svg
-          class="w-6 h-6 text-white fill-current"
-          viewBox="0 0 40 40"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"
-          />
+        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40">
+          <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"/>
         </svg>
       </div>
       <div class="px-4 py-2 -mx-3">
-        <div class="mx-3">
-          <span class="font-semibold text-white">Success</span>
-          <p class="text-sm text-gray-100">{{ successMessage }}</p>
-        </div>
+        <span class="font-semibold text-white">Success</span>
+        <p class="text-sm text-gray-100">{{ successMessage }}</p>
       </div>
     </div>
 
     <!-- Error Message -->
-    <div
-      *ngIf="errorMessage"
-      @messageAnimation
-      class="flex w-full bg-red-500 rounded-lg shadow-md mb-4"
-    >
+    <div *ngIf="errorMessage"  class="flex w-full bg-red-500 rounded-lg shadow-md mb-4">
       <div class="flex items-center justify-center w-12 bg-red-600">
-        <svg
-          class="w-6 h-6 text-white fill-current"
-          viewBox="0 0 40 40"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM20 29.1667V29.1667C18.8833 29.1667 17.5 27.8333 17.5 26.6667C17.5 25.5 18.8833 24.1667 20 24.1667C21.1167 24.1667 22.5 25.5 22.5 26.6667C22.5 27.8333 21.1167 29.1667 20 29.1667ZM19.5833 15H20.4167V22.5H19.5833V15Z"
-          />
+        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40">
+          <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM20 29.1667V29.1667C18.8833 29.1667 17.5 27.8333 17.5 26.6667C17.5 25.5 18.8833 24.1667 20 24.1667C21.1167 24.1667 22.5 25.5 22.5 26.6667C22.5 27.8333 21.1167 29.1667 20 29.1667ZM19.5833 15H20.4167V22.5H19.5833V15Z"/>
         </svg>
       </div>
       <div class="px-4 py-2 -mx-3">
-        <div class="mx-3">
-          <span class="font-semibold text-white">Error</span>
-          <p class="text-sm text-gray-100">{{ errorMessage }}</p>
+        <span class="font-semibold text-white">Error</span>
+        <p class="text-sm text-gray-100">{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Car Details Section -->
+  <div class="bg-white/5 backdrop-blur-md max-w-3xl mx-auto my-4 bg-white shadow-md rounded-lg overflow-hidden relative z-10" *ngFor="let car of cars">
+    <div class="md:flex">
+      <!-- Car Image -->
+      <div class="md:w-1/3">
+        <img src={{car.processedImg}} alt="Car Image" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Car Details -->
+      <div class="md:w-2/3 p-4">
+        <!-- Title and Subtitle -->
+        <h3 class="text-xl font-semibold text-blue-600">{{car.brand}} - {{car.name}} </h3>
+        <p class="text-white">{{car.brand}} - {{car.name}}</p>
+
+        <!-- Car Specifications -->
+        <div class="my-2 text-sm text-white">
+          <span class="font-semibold">Price:</span> ${{car.price}}
+          <span class="mx-2">|</span>
+          <span class="font-semibold">Color:</span> {{car.colour}}
+          <span class="mx-2">|</span>
+          <span class="font-semibold">Transmission:</span> {{car.transmission}}
+          <span class="mx-2">|</span>
+          <span class="font-semibold">Type:</span> {{car.type}}
+          <span class="mx-2">|</span>
+          <span class="font-semibold">Year:</span> {{car.year}}
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex space-x-4 mt-4">
+          <button routerLink="/admin/car/{{car.id}}" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">Update</button>
+          <button (click)="deleteCar(car.id)" class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600">Delete</button>
         </div>
       </div>
     </div>
   </div>
-    
-    <div class=" bg-white/5 backdrop-blur-md max-w-3xl mx-auto my-4 bg-white shadow-md rounded-lg overflow-hidden relative z-10" *ngFor="let car of cars">
-        <div class="md:flex">
-          <!-- Car Image -->
-          <div class="md:w-1/3">
-            <img src={{car.processedImg}} alt="Car Image" class="w-full h-full object-cover">
-          </div>
-      
-          <!-- Car Details -->
-          <div class="md:w-2/3 p-4">
-            <!-- Title and Subtitle -->
-            <h3 class="text-xl font-semibold text-blue-600">{{car.brand}} - {{car.name}} </h3>
-            <p class="text-white">{{car.brand}} - {{car.name}}</p>
-      
-            <!-- Car Specifications -->
-            <div class="my-2 text-sm text-white">
-              <span class="font-semibold">Price:</span> ${{car.price}}
-              <span class="mx-2">|</span>
-              <span class="font-semibold">Color:</span> {{car.colour}}
-              <span class="mx-2">|</span>
-              <span class="font-semibold">Transmission:</span> {{car.transmission}}
-              <span class="mx-2">|</span>
-              <span class="font-semibold">Type:</span> {{car.type}}
-              <span class="mx-2">|</span>
-              <span class="font-semibold">Year:</span> {{car.year}}
-            </div>
-      
-            <!-- Action Buttons -->
-            <div class="flex space-x-4 mt-4">
-              <button routerLink="/admin/car/{{car.id}}" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">Update</button>
-              <button (click)="deleteCar(car.id)" class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
 </div>
