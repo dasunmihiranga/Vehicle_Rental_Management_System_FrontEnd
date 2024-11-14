@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchCarComponent } from './components/search-car/search-car.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SearchCarComponent } from './components/search-car/search-car.component
     CommonModule,
     CustomerRoutingModule,
     ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class CustomerModule { }

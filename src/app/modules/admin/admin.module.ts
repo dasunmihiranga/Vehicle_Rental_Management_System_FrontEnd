@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
 import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
 import { SearchCarComponent } from './components/search-car/search-car.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -29,6 +30,7 @@ import { SearchCarComponent } from './components/search-car/search-car.component
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class AdminModule { }
