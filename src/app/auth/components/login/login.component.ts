@@ -25,6 +25,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   successMessage: string | null = null;
   errorMessage: string | null = null;
+  isLoading: boolean = false;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
@@ -39,6 +40,7 @@ export class LoginComponent {
 
   login() {
     console.log(this.loginForm.value);
+    this.isLoading = true; 
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         console.log(res);
@@ -50,7 +52,7 @@ export class LoginComponent {
 
           StorageService.saveUser(user);
           StorageService.saveToken(res.jwt);
-
+          this.isLoading = false; 
           this.successMessage = "Login successfully!";
           this.errorMessage = null;
           this.autoDismissSuccess(); // Call the auto dismiss method
@@ -66,6 +68,7 @@ export class LoginComponent {
         }
       },
       error: (err) => {
+        this.isLoading = false; 
         this.errorMessage = "Login failed!";
         this.successMessage = null;
         this.autoDismissError(); // Call the auto dismiss method

@@ -19,6 +19,60 @@
       Unlock exclusive access to our services by creating an account.
     </p>
 
+    <!-- Loading Spinner -->
+    <div
+      *ngIf="isLoading"
+      class="flex items-center justify-center fixed inset-0 z-50 bg-black bg-opacity-40"
+    >
+      <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+        <circle
+          class="pl__ring pl__ring--a"
+          cx="120"
+          cy="120"
+          r="105"
+          fill="none"
+          stroke="#000"
+          stroke-width="20"
+          stroke-dasharray="0 660"
+          stroke-dashoffset="-330"
+          stroke-linecap="round"
+        ></circle>
+        <circle
+          class="pl__ring pl__ring--b"
+          cx="120"
+          cy="120"
+          r="35"
+          fill="none"
+          stroke="#000"
+          stroke-width="20"
+          stroke-dasharray="0 220"
+          stroke-dashoffset="-110"
+          stroke-linecap="round"
+        ></circle>
+        <circle
+          class="pl__ring pl__ring--c"
+          cx="85"
+          cy="120"
+          r="70"
+          fill="none"
+          stroke="#000"
+          stroke-width="20"
+          stroke-dasharray="0 440"
+          stroke-linecap="round"
+        ></circle>
+        <circle
+          class="pl__ring pl__ring--d"
+          cx="155"
+          cy="120"
+          r="70"
+          fill="none"
+          stroke="#000"
+          stroke-width="20"
+          stroke-dasharray="0 440"
+          stroke-linecap="round"
+        ></circle>
+      </svg>
+    </div>
     <!-- Alert Messages -->
     <div
       *ngIf="successMessage"
@@ -71,7 +125,7 @@
     <!-- Sign-Up Form -->
     <form
       [formGroup]="signupForm"
-      class=" bg-white/5 backdrop-blur-md  w-full max-w-md bg-surface p-8 rounded-lg shadow-lg"
+      class="bg-white/5 backdrop-blur-md w-full max-w-md bg-surface p-8 rounded-lg shadow-lg"
     >
       <!-- Email -->
       <div class="relative flex items-center mb-4">
@@ -234,19 +288,21 @@
       <button
         type="button"
         (click)="register()"
-        class="w-full py-3 text-white bg-white/5 backdrop-blur-md   hover:bg-blue-700 rounded-lg focus:outline-none"
+        class="w-full py-3 text-white bg-white/5 backdrop-blur-md hover:bg-blue-700 rounded-lg focus:outline-none"
       >
         Sign Up
       </button>
 
       <div class="mt-6 text-center">
-        <a href="#"
-        routerLink="/login"
-        routerLinkActive="active"
-        class="text-sm text-[#1D4ED8] hover:underline">
-            Already have an account?
+        <a
+          href="#"
+          routerLink="/login"
+          routerLinkActive="active"
+          class="text-sm text-[#1D4ED8] hover:underline"
+        >
+          Already have an account?
         </a>
-    </div>
+      </div>
     </form>
   </div>
 </div>

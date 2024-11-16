@@ -24,6 +24,7 @@ export class SignupComponent {
   signupForm: FormGroup;
   successMessage: string | null = null;
   errorMessage: string | null = null;
+  isLoading: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.signupForm = this.fb.group({
@@ -36,8 +37,10 @@ export class SignupComponent {
 
   register() {
     if (this.signupForm.valid) {
+      this.isLoading = true; 
       this.authService.register(this.signupForm.value).subscribe({
         next: () => {
+          this.isLoading = false;
           this.successMessage = "Your account has been created successfully!";
           this.errorMessage = null;
           this.autoDismissSuccess();  // Call the auto dismiss method
@@ -48,6 +51,7 @@ export class SignupComponent {
           }, 2000); // Delay of 5 seconds for the success message
         },
         error: (err) => {
+          this.isLoading = false;
           this.errorMessage = err.error.message || "Registration failed!";
           this.successMessage = null;
           this.autoDismissError();  // Call the auto dismiss method

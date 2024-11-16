@@ -29,6 +29,7 @@ export class GetBookingsComponent implements OnInit {
   filterBookings: any = [];
   successMessage: string | null = null;
   errorMessage: string | null = null;
+  isLoading: boolean = false;
 
   constructor(private adminService: AdminService) {}
 
@@ -51,16 +52,16 @@ export class GetBookingsComponent implements OnInit {
 
   getBookings(): void {
     this.resetBookings();
-    
+    this.isLoading = true;
     this.adminService.getCarBookings().subscribe({
       next: (res: any) => {
-        // Format dates for all bookings
+        this.isLoading = false;
         res.forEach((booking: any) => {
           booking.fromDate = this.formatDate(booking.fromDate);
           booking.toDate = this.formatDate(booking.toDate);
         });
 
-        // Separate pending and non-pending bookings
+
         res.forEach((booking: any) => {
           if (booking.bookCarStatus === 'PENDING') {
             this.bookings.push(booking);
@@ -70,6 +71,7 @@ export class GetBookingsComponent implements OnInit {
         });
       },
       error: (err) => {
+        this.isLoading = false;
         this.errorMessage = 'Failed to fetch bookings';
         this.autoDismissError();
       }
@@ -78,10 +80,11 @@ export class GetBookingsComponent implements OnInit {
 
   changeBookingStatus(id: number, status: string): void {
     // Find the booking that's being updated
-    const bookingToMove = this.bookings.find((booking: any) => booking.id === id);
-    
+    //const bookingToMove = this.bookings.find((booking: any) => booking.id === id);
+    this.isLoading = true; 
     this.adminService.changeBookingStatus(id, status).subscribe({
       next: (res) => {
+        this.isLoading = false; 
         this.successMessage = 'Booking Status changed successfully';
         this.errorMessage = null;
         this.autoDismissSuccess();
@@ -93,6 +96,7 @@ export class GetBookingsComponent implements OnInit {
         }, 1000);
       },
       error: (err) => {
+        this.isLoading = false; 
         this.errorMessage = err.error?.message || 'Something went wrong';
         this.successMessage = null;
         this.autoDismissError();

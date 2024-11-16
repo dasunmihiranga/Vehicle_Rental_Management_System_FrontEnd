@@ -25,6 +25,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class PostVehicleComponent implements OnInit {
   successMessage: string | null = null;
   errorMessage: string | null = null;
+  isLoading: boolean = false;
 
   postVehicleForm!: FormGroup;
   selectedFile: File | null = null;
@@ -74,8 +75,10 @@ export class PostVehicleComponent implements OnInit {
     // formData.forEach((value, key) => {
     //   console.log(`${key}: ${value}`);
     // });
+    this.isLoading = true;
     this.adminService.postCar(formData).subscribe({
       next: () => {
+        this.isLoading = false;
         this.successMessage = "Vehicle Post created successfully!";
         this.errorMessage = null;
         this.autoDismissSuccess();  
@@ -85,6 +88,7 @@ export class PostVehicleComponent implements OnInit {
         }, 2000); 
       },
       error: (err) => {
+        this.isLoading = false;
         this.errorMessage = err.error.message || "Creation failed!";
         this.successMessage = null;
         this.autoDismissError(); 
