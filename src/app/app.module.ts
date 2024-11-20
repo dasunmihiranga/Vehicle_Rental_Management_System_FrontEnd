@@ -23,8 +23,6 @@ import { DefaultpageComponent } from './auth/components/defaultpage/defaultpage.
 import { AdminHeaderComponent } from './modules/admin/components/admin-header/admin-header.component';
 import { CustomerHeaderComponent } from './modules/customer/components/customer-header/customer-header.component';
 
-import { PostVehicleComponent } from '../app/modules/admin/components/post-vehicle/post-vehicle.component';
-
 
 registerLocaleData(en);
 

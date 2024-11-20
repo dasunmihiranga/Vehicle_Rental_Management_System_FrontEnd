@@ -34,7 +34,7 @@ export class SearchCarComponent {
   constructor(private fb:FormBuilder,
     private customerService:CustomerService
   ){
-    this.searchCarForm=fb.group({
+    this.searchCarForm=this.fb.group({
       brand:[null],
       type:[null],
       transmission:[null],
