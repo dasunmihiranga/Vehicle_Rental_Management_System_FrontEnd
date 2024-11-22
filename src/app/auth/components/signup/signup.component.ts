@@ -43,35 +43,33 @@ export class SignupComponent {
           this.isLoading = false;
           this.successMessage = "Your account has been created successfully!";
           this.errorMessage = null;
-          this.autoDismissSuccess();  // Call the auto dismiss method
+          this.autoDismissSuccess();  
   
-          // Navigate to the login page after a delay to show the success message
+          
           setTimeout(() => {
             this.router.navigate(['/login']);
-          }, 2000); // Delay of 5 seconds for the success message
+          }, 2000); 
         },
         error: (err) => {
           this.isLoading = false;
           this.errorMessage = err.error.message || "Registration failed!";
           this.successMessage = null;
-          this.autoDismissError();  // Call the auto dismiss method
+          this.autoDismissError(); 
         }
       });
     }
   }
   
-
-  // Auto-dismiss success message after 5 seconds
   autoDismissSuccess() {
     setTimeout(() => {
       this.successMessage = null;
-    }, 2000); // 5000 milliseconds = 5 seconds
+    }, 2000);
   }
 
-  // Auto-dismiss error message after 5 seconds
+  
   autoDismissError() {
     setTimeout(() => {
       this.errorMessage = null;
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000); 
   }
 }

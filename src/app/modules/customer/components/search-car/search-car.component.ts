@@ -54,7 +54,6 @@ export class SearchCarComponent {
           'data:image/jpeg;base64,' + element.returnedImage;
         this.cars.push(element);
       });
-      // Populate the car list with the returned data
     })
 
   }

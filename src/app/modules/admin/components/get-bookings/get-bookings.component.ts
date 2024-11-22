@@ -89,7 +89,7 @@ export class GetBookingsComponent implements OnInit {
         this.errorMessage = null;
         this.autoDismissSuccess();
         
-        // Refresh the lists to ensure synchronization with backend
+      
         setTimeout(() => {
           this.resetBookings();
           this.getBookings();

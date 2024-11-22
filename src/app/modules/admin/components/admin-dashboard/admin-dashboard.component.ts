@@ -49,17 +49,16 @@ export class AdminDashboardComponent {
         this.getAllCars();
         this.successMessage = 'Deleted  successfully!';
         this.errorMessage = null;
-        this.autoDismissSuccess(); // Call the auto dismiss method
+        this.autoDismissSuccess();
 
-        // Navigate to the login page after a delay to show the success message
         setTimeout(() => {
           this.router.navigateByUrl('/admin/dashboard');
-        }, 2000); // Delay of 5 seconds for the success message
+        }, 2000);
       },
       error: (err) => {
         this.errorMessage = err.error.message || 'Deleted failed!';
         this.successMessage = null;
-        this.autoDismissError(); // Call the auto dismiss method
+        this.autoDismissError();
       },
     });
   }
@@ -67,13 +66,13 @@ export class AdminDashboardComponent {
   autoDismissSuccess() {
     setTimeout(() => {
       this.successMessage = null;
-    }, 2000); // 5000 milliseconds = 5 seconds
+    }, 2000);
   }
 
   // Auto-dismiss error message after 5 seconds
   autoDismissError() {
     setTimeout(() => {
       this.errorMessage = null;
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000); 
   }
 }

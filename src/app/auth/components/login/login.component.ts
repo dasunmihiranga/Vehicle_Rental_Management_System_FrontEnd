@@ -55,38 +55,35 @@ export class LoginComponent {
           this.isLoading = false; 
           this.successMessage = "Login successfully!";
           this.errorMessage = null;
-          this.autoDismissSuccess(); // Call the auto dismiss method
+          this.autoDismissSuccess();
 
-          // Navigate after a delay to show the success message
           setTimeout(() => {
             if (StorageService.isAdminLoginIn()) {
               this.router.navigateByUrl('/admin/dashboard');
             } else if (StorageService.isCustomerLoginIn()) {
               this.router.navigateByUrl('/customer/dashboard');
             }
-          }, 1000); // Delay of 2 seconds for the success message
+          }, 1000); 
         }
       },
       error: (err) => {
         this.isLoading = false; 
         this.errorMessage = "Login failed!";
         this.successMessage = null;
-        this.autoDismissError(); // Call the auto dismiss method
+        this.autoDismissError();
       }
     });
   }
 
-  // Auto-dismiss success message after 2 seconds
   autoDismissSuccess() {
     setTimeout(() => {
       this.successMessage = null;
-    }, 2000); // 2000 milliseconds = 2 seconds
+    }, 2000); 
   }
 
-  // Auto-dismiss error message after 5 seconds
   autoDismissError() {
     setTimeout(() => {
       this.errorMessage = null;
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000); 
   }
 }

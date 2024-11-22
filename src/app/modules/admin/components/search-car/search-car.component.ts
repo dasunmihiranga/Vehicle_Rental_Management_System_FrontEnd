@@ -79,14 +79,14 @@ export class SearchCarComponent {
         this.successMessage = 'Deleted  successfully!';
         this.cars = [];
         this.errorMessage = null;
-        this.autoDismissSuccess(); // Call the auto dismiss method
+        this.autoDismissSuccess(); 
 
         
       },
       error: (err) => {
         this.errorMessage = err.error.message || 'Deleted failed!';
         this.successMessage = null;
-        this.autoDismissError(); // Call the auto dismiss method
+        this.autoDismissError(); 
       },
     });
   }
@@ -94,14 +94,14 @@ export class SearchCarComponent {
   autoDismissSuccess() {
     setTimeout(() => {
       this.successMessage = null;
-    }, 2000); // 5000 milliseconds = 5 seconds
+    }, 2000);
   }
 
-  // Auto-dismiss error message after 5 seconds
+ 
   autoDismissError() {
     setTimeout(() => {
       this.errorMessage = null;
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000);
   }
 
 

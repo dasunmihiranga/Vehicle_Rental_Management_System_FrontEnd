@@ -52,7 +52,6 @@ export class UpdateVehicleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Initialize form with validators
     this.updateVehicleForm = this.fb.group({
       name: [null, [Validators.required]],
       brand: [null, [Validators.required]],
@@ -62,7 +61,7 @@ export class UpdateVehicleComponent implements OnInit {
       price: [null, [Validators.required, Validators.min(0)]],
       description: [null, [Validators.required, Validators.minLength(10)]],
       year: [null, [Validators.required]],
-      image: [null] // Optional since we might not update the image
+      image: [null] 
     });
 
     // Load existing vehicle data
@@ -74,12 +73,10 @@ export class UpdateVehicleComponent implements OnInit {
       next: (res) => {
         console.log('Car data received:', res);
         
-        // Set existing image if available
         if (res.returnedImage) {
           this.existingImage = `data:image/jpeg;base64,${res.returnedImage}`;
         }
-
-        // Update form with existing data
+        
         this.updateVehicleForm.patchValue({
           name: res.name,
           brand: res.brand,
