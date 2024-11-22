@@ -131,38 +131,42 @@
                   <th class="px-4 py-3 text-xs font-semibold uppercase text-left">Actions</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-700/30">
-                <tr *ngFor="let booking of bookings" class="text-white hover:bg-white/10 transition-colors">
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.username }}</td>
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.email }}</td>
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.fromDate }}</td>
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.toDate }}</td>
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.days }}</td>
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.price }}</td>
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">
-                    <span class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-600">
-                      PENDING
-                    </span>
-                  </td>
-                  <td class="px-4 py-3 text-sm whitespace-nowrap">
-                    <div class="inline-flex ">
+              <ng-container *ngFor="let booking of bookings">
+                <tbody class="divide-y divide-gray-700/30">
+                  <tr *ngIf="(booking.bookCarStatus==='PENDING')" class="text-white hover:bg-white/10 transition-colors">
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.username }}</td>
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.email }}</td>
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.fromDate }}</td>
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.toDate }}</td>
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.days }}</td>
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.price }}</td>
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">
+                      <span class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-600">
+                        PENDING
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-sm whitespace-nowrap">
+                      <div class="inline-flex ">
+                        <button
+                        (click)="changeBookingStatus(booking.id, 'Approve')"
+                        class="bg-green-400 text-white hover:bg-gray-400 font-bold py-1 px-2 rounded-l"
+                      >
+                        Approve
+                      </button>
                       <button
-                      (click)="changeBookingStatus(booking.id, 'Approve')"
-                      class="bg-green-400 text-white hover:bg-gray-400 font-bold py-1 px-2 rounded-l"
-                    >
-                      Approve
-                    </button>
-                    <button
-                      (click)="changeBookingStatus(booking.id, 'Reject')"
-                      class="bg-red-400 hover:bg-gray-400 text-white font-bold py-1 px-4 rounded-r"
-                    >
-                      Reject
-                    </button>
-      
-                     </div>
-                  </td>
-                </tr>
-              </tbody>
+                        (click)="changeBookingStatus(booking.id, 'Reject')"
+                        class="bg-red-400 hover:bg-gray-400 text-white font-bold py-1 px-4 rounded-r"
+                      >
+                        Reject
+                      </button>
+        
+                       </div>
+                    </td>
+                  </tr>
+                </tbody>
+
+              </ng-container>
+              
             </table>
           </div>
         </div>
@@ -170,8 +174,9 @@
 
       <!-- Mobile Cards for Pending -->
       <div class="md:hidden space-y-4">
-        <div
-          *ngFor="let booking of bookings"
+        <ng-container *ngFor="let booking of bookings">
+          <div
+          *ngIf="(booking.bookCarStatus==='PENDING')"
           class="bg-white/10 backdrop-blur-md rounded-lg p-4 text-white"
         >
           <div class="flex justify-between items-center mb-4">
@@ -218,6 +223,8 @@
             </button>
           </div>
         </div>
+        </ng-container>
+        
       </div>
     </section>
 
@@ -242,7 +249,10 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-700/30">
-                <tr *ngFor="let booking of filterBookings" class="text-white hover:bg-white/10 transition-colors">
+                <ng-container *ngFor="let booking of bookings">
+                  <tr *ngIf="(booking.bookCarStatus==='APPROVED') || (booking.bookCarStatus==='REJECTED') "
+                 class="text-white hover:bg-white/10 transition-colors"
+                 >
                   <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.username }}</td>
                   <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.email }}</td>
                   <td class="px-4 py-3 text-sm whitespace-nowrap">{{ booking.fromDate }}</td>
@@ -261,6 +271,9 @@
                     </span>
                   </td>
                 </tr>
+
+                </ng-container>
+                
               </tbody>
             </table>
           </div>
@@ -269,8 +282,9 @@
 
       <!-- Mobile Cards for History -->
       <div class="md:hidden space-y-4">
-        <div
-          *ngFor="let booking of filterBookings"
+        <ng-container *ngFor="let booking of bookings">
+          <div
+          *ngIf="(booking.bookCarStatus==='APPROVED') || (booking.bookCarStatus==='REJECTED') "
           class="bg-white/10 backdrop-blur-md rounded-lg p-4 text-white"
         >
           <div class="flex justify-between items-center mb-4">
@@ -308,6 +322,8 @@
             </div>
           </div>
         </div>
+        </ng-container>
+        
       </div>
     </section>
   </div>

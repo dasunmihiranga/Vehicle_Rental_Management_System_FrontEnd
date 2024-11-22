@@ -26,7 +26,6 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class GetBookingsComponent implements OnInit {
   bookings: any = [];
-  filterBookings: any = [];
   successMessage: string | null = null;
   errorMessage: string | null = null;
   isLoading: boolean = false;
@@ -39,7 +38,6 @@ export class GetBookingsComponent implements OnInit {
 
   private resetBookings(): void {
     this.bookings = [];
-    this.filterBookings = [];
   }
 
   private formatDate(date: string | number | Date): string {
@@ -55,20 +53,15 @@ export class GetBookingsComponent implements OnInit {
     this.isLoading = true;
     this.adminService.getCarBookings().subscribe({
       next: (res: any) => {
+        console.log(res);
+        
         this.isLoading = false;
         res.forEach((booking: any) => {
           booking.fromDate = this.formatDate(booking.fromDate);
           booking.toDate = this.formatDate(booking.toDate);
         });
 
-
-        res.forEach((booking: any) => {
-          if (booking.bookCarStatus === 'PENDING') {
-            this.bookings.push(booking);
-          } else {
-            this.filterBookings.push(booking);
-          }
-        });
+        res.forEach((booking: any) =>  this.bookings.push(booking));
       },
       error: (err) => {
         this.isLoading = false;
